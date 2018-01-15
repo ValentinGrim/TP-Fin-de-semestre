@@ -51,5 +51,4 @@ int majPosition(Balle * balle, float dt)          // Met a jour la position de l
 
   Balle_v.acceleration = multScalVect((1/Balle_v.masse),S);
 
-  printf("%f %f\n%f %f\n%f %f\n%f %f\n", P.x, P.y, f.x, f.y,S.x, S.y, Balle_v.acceleration.x, Balle_v.acceleration.y);
 }
