@@ -11,14 +11,19 @@
 
 Balle chargerBalle(char * chemin)
 {
-  char c; //Buffer de lecture a vide
+  
+  Balle Balle_v;
 
   FILE *pFichier = NULL; //init pointeur fichier NULL
 
-  pFichier = fopen(chemin, "r"); //Ouverture fichier texte
+  pFichier = fopen("balle.txt", "r"); //Ouverture fichier texte
 
-  fread(&c, sizeof(char), 6, pFichier); //Passe le mot "masse "
-  //fscanf(pFichier, "%f", &Balle.masse); //Récuperer la valeur de la masse
+  fscanf(pFichier, "masse %f\n", &Balle_v.masse); //Récupérer Valeur masse
+  fscanf(pFichier, "fCoef %f\n", &Balle_v.coeffriction); //Récuperer Valeur fcoef
+  fscanf(pFichier, "position %f %f\n", &Balle_v.position.x, &Balle_v.position.y); //Récupérer valeur position en x et y
+  fscanf(pFichier, "vitesse %f %f", &Balle_v.vitesse.x, &Balle_v.vitesse.y); // Récupérer valeur vitesse en x et y
+  
+  fclose(pFichier);
 
 }
 
@@ -30,23 +35,3 @@ intmajPosition(Balle * balle, float dt)          // Met a jour la position de la
   
 }
 
-
-int main()
-{
-
-  char c; //Buffer de lecture a vide
-
-  Balle Balle_v;
-
-  FILE *pFichier = NULL; //init pointeur fichier NULL
-
-  pFichier = fopen("balle.txt"), "r"); //Ouverture fichier texte
-
-  fread(&c, sizeof(char), 6, pFichier); //Passe le mot "masse "
-  fscanf(pFichier, "%f", &Balle_v.masse); //Récuperer la valeur de la masse
-
-  printf("%f", Balle_v.masse);
-
-  fclose(pFichier);
-
-}
