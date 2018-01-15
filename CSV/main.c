@@ -22,9 +22,9 @@ int main(int agrc, char ** argv)
     FILE *pFichier = NULL;
     pFichier = fopen(argv[2], "w");
 
+    float t;
 
-
-    for(float t = 0.0; t <= 3; t += 0.01)
+    for(t = 0.0; t <= 3; t += 0.01)
     {
         int secu;
         fprintf(pFichier, "%f;%f;%f\n", t, Balle_v.position.x, Balle_v.position.y);

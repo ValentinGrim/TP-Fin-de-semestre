@@ -37,26 +37,27 @@ int majPosition(Balle * Balle_v, float dt)          // Met a jour la position de
 
   if (!Balle_v) return -1;
 
-    Vecteur tmp;
+  else
+  { 
 
     Vecteur P;                                      // Création du vecteur poidss
     P = creerVect(0,-9.81);
     P = multScalVect(Balle_v->masse,P);
 
-  Vecteur f;                                      // Création du vecteur des forces de frottements fisqueux
-  f = multScalVect(-Balle_v->coeffriction,Balle_v->vitesse);
+    Vecteur f;                                      // Création du vecteur des forces de frottements fisqueux
+    f = multScalVect(-Balle_v->coeffriction,Balle_v->vitesse);
 
-  Vecteur S;                                       // Le vecteur de la somme des forces
-  S = addVect(P,f);
+    Vecteur S;                                       // Le vecteur de la somme des forces
+    S = addVect(P,f);
 
-  tmp = Balle_v->vitesse; // Sauvegarde de la vitesse pour majPosition
+    Balle_v->acceleration = multScalVect(((float)1/Balle_v->masse),S);     //calcul de l’accélération courante grâce à l’équation (1)
 
-  Balle_v->acceleration = multScalVect(((float)1/Balle_v->masse),S);     //calcul de l’accélération courante grâce à l’équation (1)
+    Balle_v->vitesse = addVect(Balle_v->vitesse,(multScalVect(dt , Balle_v->acceleration)));	// Calcul de la nouvelle vitesse grâce à l'équation (2)
 
-  Balle_v->vitesse = addVect(Balle_v->vitesse,(multScalVect(dt , Balle_v->acceleration)));	// Calcul de la nouvelle vitesse grâce à l'équation (2)
+    Balle_v->position = addVect(Balle_v->position,(multScalVect(dt , Balle_v->vitesse))); //Calcul de la nouvelle position grâce a l'équation (3)
 
-  Balle_v->position = addVect(Balle_v->position,(multScalVect(dt , tmp))); //Calcul de la nouvelle position grâce a l'équation (3)
+    return 0;
 
-  return 0;
+  }
 
 }
