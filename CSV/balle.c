@@ -41,7 +41,9 @@ intmajPosition(Balle * balle, float dt)          // Met a jour la position de la
   Vecteur f;                                      // Création du vecteur des forces de frottements fisqueux
   f = Balle_v.vitesse;
   f = multScalVect(Balle_V.coeffriction,f);
+
+  Vecteur S;                                       // Le vecteur de la somme des forces
+  S = addVect(P,f);
   
-  Vecteur S;                                       // Le vecteur de la somme des forces 
-  S=addVect(P,f);
+  Balle_v.acceleration = multScalVect((1/Balle_V.masse),S);
 }
