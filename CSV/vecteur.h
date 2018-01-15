@@ -8,6 +8,7 @@
 
 #ifndef vecteur_h
 #define vecteur_h
+
 typedef struct Vecteur_decl
 {
 	float x;
@@ -16,7 +17,7 @@ typedef struct Vecteur_decl
 
 Vecteur creerVect(float x,float y);
 
-Vecteur multScalVEct(float s, Vecteur v);
+Vecteur multScalVect(float s, Vecteur v);
 
 Vecteur addVect(Vecteur v1, Vecteur v2);
 

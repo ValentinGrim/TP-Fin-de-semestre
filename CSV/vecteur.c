@@ -6,9 +6,10 @@
 //  Evalution TP Final
 //
 
-#include <stdio.h>
+#include "balle.h"
 #include "vecteur.h"
-
+#include <stdlib.h>
+#include <stdio.h>
 Vecteur creerVect(float x,float y) // Retourne une structure Vecteur initialisee a (x,y)
 {
 	Vecteur v;
@@ -23,7 +24,7 @@ Vecteur multScalVect(float s,Vecteur v) // Multiplie un scalaire avec un vecteur
 	Vecteur v1;
 	v1.x=s*v.x;
 	v1.y=s*v.y;
-	
+
 	return v1;
 }
 
@@ -32,6 +33,6 @@ Vecteur addVect(Vecteur v1,Vecteur v2) // Additionne 2 vecteurs et retourne le r
 	Vecteur v3;
 	v3.x=v1.x+v2.x;
 	v3.y=v1.y+v2.y;
-	
+
 	return v3;
 }

@@ -7,10 +7,11 @@
 //
 
 #include "balle.h"
+#include "vecteur.h"
 #include <stdlib.h>
 #include <stdio.h>
 
-Balle chargerBalle
+Balle chargerBalle()
 {
 
   Balle Balle_v;
@@ -26,14 +27,16 @@ Balle chargerBalle
 
   fclose(pFichier);
 
+  return Balle_v;
+
 }
 
 
-intmajPosition(Balle * balle, float dt)          // Met a jour la position de la balle en appliquant le PFD et retourne -1 si balle est NULL (securite) retourne -1 si balle est NULL (securite)
+int majPosition(Balle * balle, float dt)          // Met a jour la position de la balle en appliquant le PFD et retourne -1 si balle est NULL (securite) retourne -1 si balle est NULL (securite)
 {
 
   Balle Balle_v;
-  Balle_v = chargerBalle;
+  Balle_v = chargerBalle();
 
   Vecteur P;                                      // Création du vecteur poids
   P = creerVect(0,-9.81);
@@ -41,10 +44,10 @@ intmajPosition(Balle * balle, float dt)          // Met a jour la position de la
 
   Vecteur f;                                      // Création du vecteur des forces de frottements fisqueux
   f = Balle_v.vitesse;
-  f = multScalVect(Balle_V.coeffriction,f);
+  f = multScalVect(Balle_v.coeffriction,f);
 
   Vecteur S;                                       // Le vecteur de la somme des forces
   S = addVect(P,f);
 
-  Balle_v.acceleration = multScalVect((1/Balle_V.masse),S);
+  Balle_v.acceleration = multScalVect((1/Balle_v.masse),S);
 }
