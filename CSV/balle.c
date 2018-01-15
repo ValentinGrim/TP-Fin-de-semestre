@@ -38,7 +38,7 @@ int majPosition(Balle * balle, float dt)          // Met a jour la position de l
   Balle Balle_v;
   Balle_v = chargerBalle();
 
-  Vecteur P;                                      // Création du vecteur poids
+  Vecteur P;                                      // Création du vecteur poidss
   P = creerVect(0,-9.81);
   P = multScalVect(Balle_v.masse,P);
 
@@ -50,4 +50,6 @@ int majPosition(Balle * balle, float dt)          // Met a jour la position de l
   S = addVect(P,f);
 
   Balle_v.acceleration = multScalVect((1/Balle_v.masse),S);
+
+  printf("%f %f\n%f %f\n%f %f\n%f %f\n", P.x, P.y, f.x, f.y,S.x, S.y, Balle_v.acceleration.x, Balle_v.acceleration.y);
 }

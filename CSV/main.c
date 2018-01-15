@@ -15,9 +15,9 @@ int main()
 {
 
     Balle Balle_v;
-
     Balle_v = chargerBalle();
 
-    printf("%f\n%f\n%f %f\n%f %f\n", Balle_v.masse, Balle_v.coeffriction, Balle_v.position.x, Balle_v.position.y, Balle_v.vitesse.x, Balle_v.vitesse.y);
+    majPosition(&Balle_v, 1);
+
 
 }
