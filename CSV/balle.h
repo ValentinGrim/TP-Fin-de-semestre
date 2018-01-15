@@ -22,7 +22,7 @@ typedef struct Balle_decl
 
 } Balle;
 
-Balle chargerBalle();
+Balle chargerBalle(char * argc);
 
 
 int majPosition(Balle * Balle ,float dt);     // Met a jour la position de la balle en appliquant le PFD

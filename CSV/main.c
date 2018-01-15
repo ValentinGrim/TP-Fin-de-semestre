@@ -11,17 +11,29 @@
 #include "vecteur.h"
 #include "balle.h"
 
-int main()
+int main(int agrc, char ** argv)
 {
 
+    if (agrc < 2) return EXIT_FAILURE;
+
     Balle Balle_v;
-    Balle_v = chargerBalle();
+    Balle_v = chargerBalle(argv[1]);
 
     FILE *pFichier = NULL;
-    pFichier = fopen("trajectoire.csv", "w");
+    pFichier = fopen(argv[2], "w");
 
-    float c = 15.89;
-    fprintf(pFichier, "%f;", c);
+
+
+    for(float t = 0.0; t <= 3; t += 0.01)
+    {
+        int secu;
+        fprintf(pFichier, "%f;%f;%f\n", t, Balle_v.position.x, Balle_v.position.y);
+        secu = majPosition(&Balle_v, 0.01);
+        if(secu == -1) return EXIT_FAILURE;
+
+
+
+    }
 
     fclose(pFichier);
 
