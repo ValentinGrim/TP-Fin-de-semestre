@@ -7,28 +7,17 @@
 //
 
 #include <stdlib.h>
-#include <stdlib.h>
+#include <stdio.h>
+#include "vecteur.h"
+#include "balle.h"
 
 int main()
 {
-    
-    char c;
-    unsigned long res;
-    
-    FILE *pFichier = NULL; //Créa pointeur fichier
-    
-    pFichier = fopen("balle.txt", "r"); //Ouverture du fichier balle.txt
-    
-    do
-    {
-        
-        res = fread(&c, sizeof(char), 1, pFichier);
-        printf("%c",c);
-        
-    }
-    while(res > 0);
-    
-    fclose(pFichier);
+
+    Balle Balle_v;
+
+    Balle_v = chargerBalle;
+
+    printf("%f\n%f\n%f %f\n%f %f\n", Balle_v.masse, Balle_v.coeffriction, Balle_v.position.x, Balle_v.position.y, Balle_v.vitesse.x, Balle_v.vitesse.y);
     
 }
-

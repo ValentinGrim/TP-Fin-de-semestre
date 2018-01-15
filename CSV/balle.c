@@ -7,6 +7,7 @@
 //
 
 #include "balle.h"
+#include <stdlib.h>
 #include <stdio.h>
 
 Balle chargerBalle
@@ -44,6 +45,6 @@ intmajPosition(Balle * balle, float dt)          // Met a jour la position de la
 
   Vecteur S;                                       // Le vecteur de la somme des forces
   S = addVect(P,f);
-  
+
   Balle_v.acceleration = multScalVect((1/Balle_V.masse),S);
 }
