@@ -9,6 +9,8 @@
 #ifndef balle_h
 #define balle_h
 
+#include "vecteur.h"
+
 typedef struct Balle_decl
 {
 
@@ -19,6 +21,9 @@ typedef struct Balle_decl
   Vecteur acceleration; // m/s2
 
 } Balle;
+
+Balle chargerBalle(char * chemin);
+
 
 
 #endif /* balle_h */
