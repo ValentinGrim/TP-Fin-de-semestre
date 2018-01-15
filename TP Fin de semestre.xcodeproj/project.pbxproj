@@ -6,10 +6,6 @@
 	objectVersion = 48;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		A741B92E200C96AD0018E0AE /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = A741B92D200C96AD0018E0AE /* main.c */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		A741B928200C96AD0018E0AE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -23,8 +19,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A741B92A200C96AD0018E0AE /* TP Fin de semestre */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "TP Fin de semestre"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A741B92D200C96AD0018E0AE /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		A724479C200C97E100D4A58F /* TP Fin de semestre */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "TP Fin de semestre"; path = "/Users/valentin/Desktop/TP Fin de semestre/build/Debug/TP Fin de semestre"; sourceTree = "<absolute>"; };
+		A724479D200C97FE00D4A58F /* 3_Gravitation */ = {isa = PBXFileReference; lastKnownFileType = folder; name = 3_Gravitation; path = "TP Fin de semestre/3_Gravitation"; sourceTree = "<group>"; };
+		A724479E200C97FE00D4A58F /* 2_Rebonds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = 2_Rebonds; path = "TP Fin de semestre/2_Rebonds"; sourceTree = "<group>"; };
+		A724479F200C97FF00D4A58F /* 1_CSV */ = {isa = PBXFileReference; lastKnownFileType = folder; name = 1_CSV; path = "TP Fin de semestre/1_CSV"; sourceTree = "<group>"; };
+		A72447A0200C97FF00D4A58F /* 4_Ressorts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = 4_Ressorts; path = "TP Fin de semestre/4_Ressorts"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,25 +40,11 @@
 		A741B921200C96AD0018E0AE = {
 			isa = PBXGroup;
 			children = (
-				A741B92C200C96AD0018E0AE /* TP Fin de semestre */,
-				A741B92B200C96AD0018E0AE /* Products */,
+				A724479F200C97FF00D4A58F /* 1_CSV */,
+				A724479E200C97FE00D4A58F /* 2_Rebonds */,
+				A724479D200C97FE00D4A58F /* 3_Gravitation */,
+				A72447A0200C97FF00D4A58F /* 4_Ressorts */,
 			);
-			sourceTree = "<group>";
-		};
-		A741B92B200C96AD0018E0AE /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A741B92A200C96AD0018E0AE /* TP Fin de semestre */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		A741B92C200C96AD0018E0AE /* TP Fin de semestre */ = {
-			isa = PBXGroup;
-			children = (
-				A741B92D200C96AD0018E0AE /* main.c */,
-			);
-			path = "TP Fin de semestre";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -79,7 +64,7 @@
 			);
 			name = "TP Fin de semestre";
 			productName = "TP Fin de semestre";
-			productReference = A741B92A200C96AD0018E0AE /* TP Fin de semestre */;
+			productReference = A724479C200C97E100D4A58F /* TP Fin de semestre */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -105,7 +90,7 @@
 				en,
 			);
 			mainGroup = A741B921200C96AD0018E0AE;
-			productRefGroup = A741B92B200C96AD0018E0AE /* Products */;
+			productRefGroup = A741B921200C96AD0018E0AE;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -119,7 +104,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A741B92E200C96AD0018E0AE /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

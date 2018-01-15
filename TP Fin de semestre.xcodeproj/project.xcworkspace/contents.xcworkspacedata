@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../../TP_final--Basecodes/1_CSV">
+   </FileRef>
+   <FileRef
+      location = "group:../../TP_final--Basecodes/3_Gravitation">
+   </FileRef>
+   <FileRef
       location = "self:TP Fin de semestre.xcodeproj">
    </FileRef>
 </Workspace>
