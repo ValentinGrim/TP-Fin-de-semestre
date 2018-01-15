@@ -17,7 +17,12 @@ int main()
     Balle Balle_v;
     Balle_v = chargerBalle();
 
-    majPosition(&Balle_v, 1);
+    FILE *pFichier = NULL;
+    pFichier = fopen("trajectoire.csv", "w");
 
+    float c = 15.89;
+    fprintf(pFichier, "%f;", c);
+
+    fclose(pFichier);
 
 }
