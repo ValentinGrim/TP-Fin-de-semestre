@@ -11,7 +11,7 @@
 
 Balle chargerBalle
 {
-  
+
   Balle Balle_v;
 
   FILE *pFichier = NULL; //init pointeur fichier NULL
@@ -22,7 +22,7 @@ Balle chargerBalle
   fscanf(pFichier, "fCoef %f\n", &Balle_v.coeffriction); //Récuperer Valeur fcoef
   fscanf(pFichier, "position %f %f\n", &Balle_v.position.x, &Balle_v.position.y); //Récupérer valeur position en x et y
   fscanf(pFichier, "vitesse %f %f", &Balle_v.vitesse.x, &Balle_v.vitesse.y); // Récupérer valeur vitesse en x et y
-  
+
   fclose(pFichier);
 
 }
@@ -30,15 +30,16 @@ Balle chargerBalle
 
 intmajPosition(Balle * balle, float dt)          // Met a jour la position de la balle en appliquant le PFD et retourne -1 si balle est NULL (securite) retourne -1 si balle est NULL (securite)
 {
-  
-  Balle a;
-  a=chargerBalle;
-  float x=0,y=-9.81,s=a.masse,alpha;
-  Vecteur p,f;
-  p=creerVect(x,y);
-  p=multScalVect(s,p);
-  f=a.vitesse;
-  f=multScalVect(q,p);
-  
-}
 
+  Balle Balle_v;
+  Balle_v = chargerBalle;
+
+  Vecteur P;
+  P = creerVect(0,-9.81);
+  P = multScalVect(Balle_v.masse,P);
+
+  Vecteur f;
+  f = Balle_v.vitesse;
+  f = multScalVect(Balle_V.coeffriction,f);
+
+}
