@@ -8,3 +8,9 @@
 
 #include <stdio.h>
 #include "vecteur.h"
+
+Vecteur creerVect(float x,float y)
+{
+
+
+}
