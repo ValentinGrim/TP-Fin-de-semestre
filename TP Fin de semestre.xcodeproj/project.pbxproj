@@ -6,6 +6,12 @@
 	objectVersion = 48;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A72447C7200C9E6900D4A58F /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = A72447A2200C99BE00D4A58F /* main.c */; };
+		A72447CD200CA1B400D4A58F /* vecteur.c in Sources */ = {isa = PBXBuildFile; fileRef = A72447CB200CA1B400D4A58F /* vecteur.c */; };
+		A72447D0200CA1C100D4A58F /* balle.c in Sources */ = {isa = PBXBuildFile; fileRef = A72447CE200CA1C100D4A58F /* balle.c */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		A741B928200C96AD0018E0AE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -20,10 +26,33 @@
 
 /* Begin PBXFileReference section */
 		A724479C200C97E100D4A58F /* TP Fin de semestre */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "TP Fin de semestre"; path = "/Users/valentin/Desktop/TP Fin de semestre/build/Debug/TP Fin de semestre"; sourceTree = "<absolute>"; };
-		A724479D200C97FE00D4A58F /* 3_Gravitation */ = {isa = PBXFileReference; lastKnownFileType = folder; name = 3_Gravitation; path = "TP Fin de semestre/3_Gravitation"; sourceTree = "<group>"; };
-		A724479E200C97FE00D4A58F /* 2_Rebonds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = 2_Rebonds; path = "TP Fin de semestre/2_Rebonds"; sourceTree = "<group>"; };
-		A724479F200C97FF00D4A58F /* 1_CSV */ = {isa = PBXFileReference; lastKnownFileType = folder; name = 1_CSV; path = "TP Fin de semestre/1_CSV"; sourceTree = "<group>"; };
-		A72447A0200C97FF00D4A58F /* 4_Ressorts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = 4_Ressorts; path = "TP Fin de semestre/4_Ressorts"; sourceTree = "<group>"; };
+		A72447A2200C99BE00D4A58F /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		A72447A6200C99DF00D4A58F /* balle.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = balle.bmp; sourceTree = "<group>"; };
+		A72447A7200C99E300D4A58F /* fpstimer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fpstimer.c; sourceTree = "<group>"; };
+		A72447A9200C99F100D4A58F /* sdl_stuff.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sdl_stuff.h; sourceTree = "<group>"; };
+		A72447AA200C99F100D4A58F /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		A72447AB200C99F100D4A58F /* fpstimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fpstimer.h; sourceTree = "<group>"; };
+		A72447AC200C99F100D4A58F /* sdl_stuff.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sdl_stuff.c; sourceTree = "<group>"; };
+		A72447B0200C9A1600D4A58F /* decl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = decl.h; sourceTree = "<group>"; };
+		A72447B1200C9A1600D4A58F /* sdl_stuff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdl_stuff.h; sourceTree = "<group>"; };
+		A72447B2200C9A1600D4A58F /* jupiter.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = jupiter.bmp; sourceTree = "<group>"; };
+		A72447B3200C9A1600D4A58F /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		A72447B4200C9A1600D4A58F /* sdl_stuff.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sdl_stuff.c; sourceTree = "<group>"; };
+		A72447B5200C9A1700D4A58F /* fpstimer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fpstimer.c; sourceTree = "<group>"; };
+		A72447B6200C9A1700D4A58F /* fpstimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fpstimer.h; sourceTree = "<group>"; };
+		A72447B7200C9A1700D4A58F /* balle.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = balle.bmp; sourceTree = "<group>"; };
+		A72447BC200C9A3600D4A58F /* sdl_stuff.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sdl_stuff.c; sourceTree = "<group>"; };
+		A72447BD200C9A3700D4A58F /* decl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = decl.h; sourceTree = "<group>"; };
+		A72447BE200C9A3700D4A58F /* balle.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = balle.bmp; sourceTree = "<group>"; };
+		A72447BF200C9A3700D4A58F /* fpstimer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fpstimer.c; sourceTree = "<group>"; };
+		A72447C0200C9A3700D4A58F /* fpstimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fpstimer.h; sourceTree = "<group>"; };
+		A72447C1200C9A3700D4A58F /* sdl_stuff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdl_stuff.h; sourceTree = "<group>"; };
+		A72447C2200C9A3700D4A58F /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		A72447CA200C9F0700D4A58F /* balle.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = balle.txt; sourceTree = "<group>"; };
+		A72447CB200CA1B400D4A58F /* vecteur.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = vecteur.c; sourceTree = "<group>"; };
+		A72447CC200CA1B400D4A58F /* vecteur.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vecteur.h; sourceTree = "<group>"; };
+		A72447CE200CA1C100D4A58F /* balle.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = balle.c; sourceTree = "<group>"; };
+		A72447CF200CA1C100D4A58F /* balle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = balle.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,13 +66,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A72447A1200C999700D4A58F /* CSV */ = {
+			isa = PBXGroup;
+			children = (
+				A72447CA200C9F0700D4A58F /* balle.txt */,
+				A72447A2200C99BE00D4A58F /* main.c */,
+				A72447CB200CA1B400D4A58F /* vecteur.c */,
+				A72447CC200CA1B400D4A58F /* vecteur.h */,
+				A72447CE200CA1C100D4A58F /* balle.c */,
+				A72447CF200CA1C100D4A58F /* balle.h */,
+			);
+			name = CSV;
+			sourceTree = "<group>";
+		};
+		A72447A5200C99CB00D4A58F /* Rebonds */ = {
+			isa = PBXGroup;
+			children = (
+				A72447A6200C99DF00D4A58F /* balle.bmp */,
+				A72447A7200C99E300D4A58F /* fpstimer.c */,
+				A72447AB200C99F100D4A58F /* fpstimer.h */,
+				A72447AA200C99F100D4A58F /* main.c */,
+				A72447AC200C99F100D4A58F /* sdl_stuff.c */,
+				A72447A9200C99F100D4A58F /* sdl_stuff.h */,
+			);
+			path = Rebonds;
+			sourceTree = "<group>";
+		};
+		A72447AF200C99FD00D4A58F /* Gravitation */ = {
+			isa = PBXGroup;
+			children = (
+				A72447B7200C9A1700D4A58F /* balle.bmp */,
+				A72447B0200C9A1600D4A58F /* decl.h */,
+				A72447B5200C9A1700D4A58F /* fpstimer.c */,
+				A72447B6200C9A1700D4A58F /* fpstimer.h */,
+				A72447B2200C9A1600D4A58F /* jupiter.bmp */,
+				A72447B3200C9A1600D4A58F /* main.c */,
+				A72447B4200C9A1600D4A58F /* sdl_stuff.c */,
+				A72447B1200C9A1600D4A58F /* sdl_stuff.h */,
+			);
+			path = Gravitation;
+			sourceTree = "<group>";
+		};
+		A72447BB200C9A2400D4A58F /* Ressorts */ = {
+			isa = PBXGroup;
+			children = (
+				A72447BE200C9A3700D4A58F /* balle.bmp */,
+				A72447BD200C9A3700D4A58F /* decl.h */,
+				A72447BF200C9A3700D4A58F /* fpstimer.c */,
+				A72447C0200C9A3700D4A58F /* fpstimer.h */,
+				A72447C2200C9A3700D4A58F /* main.c */,
+				A72447BC200C9A3600D4A58F /* sdl_stuff.c */,
+				A72447C1200C9A3700D4A58F /* sdl_stuff.h */,
+			);
+			path = Ressorts;
+			sourceTree = "<group>";
+		};
 		A741B921200C96AD0018E0AE = {
 			isa = PBXGroup;
 			children = (
-				A724479F200C97FF00D4A58F /* 1_CSV */,
-				A724479E200C97FE00D4A58F /* 2_Rebonds */,
-				A724479D200C97FE00D4A58F /* 3_Gravitation */,
-				A72447A0200C97FF00D4A58F /* 4_Ressorts */,
+				A72447A1200C999700D4A58F /* CSV */,
+				A72447A5200C99CB00D4A58F /* Rebonds */,
+				A72447AF200C99FD00D4A58F /* Gravitation */,
+				A72447BB200C9A2400D4A58F /* Ressorts */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,6 +188,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A72447D0200CA1C100D4A58F /* balle.c in Sources */,
+				A72447CD200CA1B400D4A58F /* vecteur.c in Sources */,
+				A72447C7200C9E6900D4A58F /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

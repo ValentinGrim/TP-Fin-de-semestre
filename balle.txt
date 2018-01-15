@@ -1,0 +1,4 @@
+masse 0.5
+fCoef 0.9
+position 4 17
+vistesse 8 12
