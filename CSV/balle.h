@@ -25,5 +25,9 @@ typedef struct Balle_decl
 Balle chargerBalle(char * chemin);
 
 
+int majPosition(Balle * balle ,float dt);     // Met a jour la position de la balle en appliquant le PFD
+                                              //retourne -1 si balle est NULL (securite)
+
+
 
 #endif /* balle_h */
