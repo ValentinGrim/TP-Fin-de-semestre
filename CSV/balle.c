@@ -59,6 +59,6 @@ int majPosition(Balle * balle, float dt)          // Met a jour la position de l
   Balle_v.vitesse = addVect(Balle_v.vitesse,Balle_v.acceleration);	// Calcul de la nouvelle vitesse grâce à l'équation (2)
 
   tmp = multScalVect(dt , tmp); //Mise a jour de la vitesse pour l'équation (3) = v(t)dt
-  Balle_v.position = addVect(Balle_v.position, tmp);
+  Balle_v.position = addVect(Balle_v.position, tmp); //Calcul de la nouvelle position grâce a l'équation (3)
 
 }
