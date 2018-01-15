@@ -9,7 +9,7 @@
 #include "balle.h"
 #include <stdio.h>
 
-Balle chargerBalle(char * chemin)
+Balle chargerBalle
 {
   
   Balle Balle_v;
