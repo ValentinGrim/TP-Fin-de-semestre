@@ -49,6 +49,11 @@ int majPosition(Balle * balle, float dt)          // Met a jour la position de l
   Vecteur S;                                       // Le vecteur de la somme des forces
   S = addVect(P,f);
 
-  Balle_v.acceleration = multScalVect((1/Balle_v.masse),S);
-
+  Balle_v.acceleration = multScalVect((1/Balle_v.masse),S);     //calcul de l’accélération courante grâce à l’équation (1)
+  
+  Balle_v.acceleration = multScalVect(dt , Balle_v.acceleration); 	//mise à jour de la vitesse de la balle grâce à l’équation (2) ;
+  Balle_v.vitesse = addVect(Balle_v.vitesse,Balle_v.acceleration);	
+  
+  Balle_v.vitesse = multScalVect(dt,Balle_v.acceleration);		//mise à jour de la position de la balle grâce à l’équation (3)
+  Balle_v.position = addVect(Balle_v.position,Balle_v.vitesse);
 }
