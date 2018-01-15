@@ -31,7 +31,14 @@ Balle chargerBalle
 intmajPosition(Balle * balle, float dt)          // Met a jour la position de la balle en appliquant le PFD et retourne -1 si balle est NULL (securite) retourne -1 si balle est NULL (securite)
 {
   
-  
+  Balle a;
+  a=chargerBalle;
+  float x=0,y=-9.81,s=a.masse,alpha;
+  Vecteur p,f;
+  p=creerVect(x,y);
+  p=multScalVect(s,p);
+  f=a.vitesse;
+  f=multScalVect(q,p);
   
 }
 
