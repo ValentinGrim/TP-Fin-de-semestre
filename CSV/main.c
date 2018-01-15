@@ -36,5 +36,5 @@ int main(int agrc, char ** argv)
     }
 
     fclose(pFichier);
-
+    return 0;
 }
