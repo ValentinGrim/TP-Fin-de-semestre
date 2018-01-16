@@ -19,11 +19,12 @@ void clicSouris(float x, float y)
 
     // TODO gerer les position de la liste des attracteurs ici
     gAttractList.positionAttracteur[gAttractList.utiliseMoi] = creerVect(x,y);
-    gAttractList.utiliseMoi++;
 
     sdl_setAttracteurPosition(attracteurCurrent,x,y);
     attracteurCurrent ++;
     attracteurCurrent %=NB_ATTRACTEURS;
+    gAttractList.utiliseMoi = attracteurCurrent;
+    
 }
 
 
