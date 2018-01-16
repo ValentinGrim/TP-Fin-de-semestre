@@ -22,12 +22,18 @@ typedef struct Balle_decl
 
 } Balle;
 
+typedef struct AttracteurList_decl
+{
+
+	Vecteur positionAttracteur[5];
+	int utiliseMoi [5];
+
+}AttracteurList;
+
 Balle chargerBalle(char * argc);
 
+int majPosition(Balle * Balle, AttracteurList * pAttrList ,float dt);     // Met a jour la position de la balle en appliquant le PFD
 
-int majPosition(Balle * Balle ,float dt);     // Met a jour la position de la balle en appliquant le PFD
-                                              //retourne -1 si balle est NULL (securite)
-
-
+void initAttracteurList(AttracteurList * pAttrList);
 
 #endif /* balle_h */
