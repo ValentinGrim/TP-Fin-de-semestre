@@ -38,7 +38,7 @@ int majPosition(Balle * Balle_v, AttracteurList * pAttrList , float dt)         
   if (!Balle_v) return -1;
 
   else
-  { 
+  {
 
     Vecteur P;                                      // Création du vecteur poidss
     P = creerVect(0,-9.81);
