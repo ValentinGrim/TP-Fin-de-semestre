@@ -32,7 +32,7 @@ Balle chargerBalle(char * chemin)
 }
 
 
-int majPosition(Balle * Balle_v, AttracteurList * pAttrList , float dt)          // Met a jour la position de la balle en appliquant le PFD et retourne -1 si balle est NULL (securite) retourne -1 si balle est NULL (securite)
+int majPosition(Balle * Balle_v, float dt)          // Met a jour la position de la balle en appliquant le PFD et retourne -1 si balle est NULL (securite) retourne -1 si balle est NULL (securite)
 {
 
   if (!Balle_v) return -1;
@@ -59,20 +59,5 @@ int majPosition(Balle * Balle_v, AttracteurList * pAttrList , float dt)         
     return 0;
 
   }
-
-}
-
-void initAttracteurList(AttracteurList * pAttrList)
-{
-
-	int i;
-	for(i = 0; i < 5; i++)
-	{
-
-		pAttrList->positionAttracteurs.x[i] = 0;
-		pAttrList->positionAttracteurs.y[i] = 0;
-		pAttrList-> uiliseMoi[i] = 0;
-
-	}
 
 }
