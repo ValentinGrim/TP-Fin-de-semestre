@@ -23,7 +23,7 @@ void clicSouris(float x, float y)
     sdl_setAttracteurPosition(attracteurCurrent,x,y);
     attracteurCurrent ++;
     attracteurCurrent %=NB_ATTRACTEURS;
-    gAttractList.utiliseMoi = attracteurCurrent;
+    gAttractList.utiliseMoi[attracteurCurrent] = attracteurCurrent;
 
 }
 
