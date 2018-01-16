@@ -7,6 +7,7 @@
 #include "decl.h"
 #include "fpstimer.h"
 
+AttracteurList gAttractList;
 
 // fonction appell�e lorsque l'on appuie avec le bouton gauche de la souris
 void clicSouris(float x, float y)
@@ -17,7 +18,8 @@ void clicSouris(float x, float y)
     static int attracteurCurrent = 0 ;
 
     // TODO gerer les position de la liste des attracteurs ici
-
+    gAttractList.positionAttracteur[gAttractList.utiliseMoi] = creerVect(x,y);
+    gAttractList.utiliseMoi++;
 
     sdl_setAttracteurPosition(attracteurCurrent,x,y);
     attracteurCurrent ++;
@@ -28,8 +30,6 @@ void clicSouris(float x, float y)
 
 int main ( int argc, char** argv )
 {
-  // sert just � faire bouger la balle de test
-    float alpha = 0.0f;
 
     if(!sdl_startup())
         return -1;
@@ -41,11 +41,42 @@ int main ( int argc, char** argv )
         fpsStep();
 
         // ----------------- TODO: remplacer par votre code --------------
-        float x ,y;
-        // On fait tourner la balle a raison de PI/2 rad / sec
-        alpha+=3.14f / 2 * fpsGetDeltaTime();
-        x = 0.5+0.3f*cosf(alpha);
-        y = 0.5+0.3f*sinf(alpha);
+        majPosition(&Balle_v, dt);
+
+        if(Balle_v.position.x < BALL_RADIUS)
+        {
+
+            Balle_v.vitesse.x = (-Balle_v.vitesse.x);
+            Balle_v.position.x = BALL_RADIUS;
+
+        }
+
+        if(Balle_v.position.x > 1 - BALL_RADIUS)
+        {
+
+            Balle_v.vitesse.x = (-Balle_v.vitesse.x);
+            Balle_v.position.x = 1 - BALL_RADIUS;
+
+        }
+
+        if(Balle_v.position.y < BALL_RADIUS)
+        {
+
+            Balle_v.vitesse.y = (-Balle_v.vitesse.y);
+            Balle_v.position.y = BALL_RADIUS;
+
+        }
+
+        if(Balle_v.position.y > 1 - BALL_RADIUS)
+        {
+
+            Balle_v.vitesse.y = (-Balle_v.vitesse.y);
+            Balle_v.position.y = 1 - BALL_RADIUS;
+
+        }
+
+        printf("x est %f et y est %f et le temps est %f \n",Balle_v.position.x,Balle_v.position.y,dt);
+        sdl_setBallPosition(Balle_v.position.x,Balle_v.position.y);
         // ---------------------------------------------------------------
 
         // TODO appeler cette fonction avec la position calcul�e pour la balle
