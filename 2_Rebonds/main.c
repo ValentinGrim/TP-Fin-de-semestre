@@ -57,6 +57,13 @@ int main ( int argc, char** argv )
             
         }
         
+        if(Balle_v.vitesse.y 0.01 && Balle_v.vitesse.y && Balle_v.position.y < 0.03)
+        {
+            
+            Balle_v.position.y = 0.03;
+            
+        }
+        
         printf("x est %f et y est %f et le temps est %f \n",Balle_v.position.x,Balle_v.position.y,dt);
         sdl_setBallPosition(Balle_v.position.x,Balle_v.position.y);
 
