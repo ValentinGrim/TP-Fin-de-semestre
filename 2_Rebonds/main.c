@@ -1,70 +1,61 @@
+
 #include <stdlib.h>
-#include <stdio.h>
-#include "vecteur.h"
-#include "balle.h"
-#include "sdl_stuff.h"
-#include "fpstimer.h"
+#include <unistd.h>
 #include <math.h>
+#include "vecteur.h"
+#include "sdl_stuff.h"
+#include "balle.h"
+#include "decl.h"
+#include "fpstimer.h"
+
+
+AttracteurList gAttractList;
+
+// fonction appellée lorsque l'on appuie avec le bouton gauche de la souris
+void clicSouris(float x, float y)
+{
+    // NB : une variable locale declaree static ne perd pas sa valeur entre deux appels a la fonction
+    // son initialisation est effectué au tout premier appel de la fonction
+    // on s'en sert ici pour savoir quel attracteur on est en train de positioner
+    static int attracteurCurrent = 0 ;
+
+    // TODO gerer les position de la liste des attracteurs ici
+
+
+    sdl_setAttracteurPosition(attracteurCurrent,x,y);
+    attracteurCurrent ++;
+    attracteurCurrent %=NB_ATTRACTEURS;
+}
 
 
 
 int main ( int argc, char** argv )
 {
-
-    float dt;
-    Balle Balle_v;
-    Balle_v = chargerBalle(argv[1]);
+	
+    initAttracteurList(&gAttractList);
 
     if(!sdl_startup())
         return -1;
 
     fpsInit();
-    // boucle pour mettre a jour en continue la simulation
+    // program main loop
     do
     {
         fpsStep();
 
         // ----------------- TODO: remplacer par votre code --------------
-       	dt=fpsGetDeltaTime();
-        majPosition(&Balle_v, dt);
-        
-        if(Balle_v.position.x < BALL_RADIUS)
-        {
-            
-            Balle_v.vitesse.x = (-Balle_v.vitesse.x) * 0.9;
-            Balle_v.position.x = BALL_RADIUS;
-            
-        }
-        
-        if(Balle_v.position.x > 1 - BALL_RADIUS)
-        {
-            
-            Balle_v.vitesse.x = (-Balle_v.vitesse.x) * 0.9;
-            Balle_v.position.x = 1 - BALL_RADIUS;
-            
-        }
-        
-        if(Balle_v.position.y < BALL_RADIUS)
-        {
-            
-            Balle_v.vitesse.y = (-Balle_v.vitesse.y) * 0.9;
-            Balle_v.position.y = BALL_RADIUS;
-            
-        }
-        
-        if(Balle_v.position.y > 1 - BALL_RADIUS)
-        {
-            
-            Balle_v.vitesse.y = (-Balle_v.vitesse.y) * 0.9;
-            Balle_v.position.y = 1 - BALL_RADIUS;
-            
-        }
-        
-        printf("x est %f et y est %f et le temps est %f \n",Balle_v.position.x,Balle_v.position.y,dt);
-        sdl_setBallPosition(Balle_v.position.x,Balle_v.position.y);
+        float x ,y;
+        // On fait tourner la balle a raison de PI/2 rad / sec
+        alpha+=3.14f / 2 * fpsGetDeltaTime();
+        x = 0.5+0.3f*cosf(alpha);
+        y = 0.5+0.3f*sinf(alpha);
+        // ---------------------------------------------------------------
 
-    }
-    while(sdl_loop());
+        // TODO appeler cette fonction avec la position calculée pour la balle
+        sdl_setBallPosition(x,y);
+
+    } while(sdl_loop());
+    // end main loop
 
     sdl_clean();
     return 0;
