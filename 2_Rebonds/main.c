@@ -1,4 +1,3 @@
-
 #include <stdlib.h>
 #include <stdio.h>
 #include "vecteur.h"
@@ -29,38 +28,35 @@ int main ( int argc, char** argv )
        	dt=fpsGetDeltaTime();
         majPosition(&Balle_v, dt);
         
-        if(Balle_v.position.x < 0)
+        if(Balle_v.position.x < BALL_RADIUS)
         {
             
-            Balle_v.vitesse.x = (-Balle_v.vitesse.x);
+            Balle_v.vitesse.x = (-Balle_v.vitesse.x) * 0.9;
+            Balle_v.position.x = BALL_RADIUS;
             
         }
         
-        if(Balle_v.position.x > 1)
+        if(Balle_v.position.x > 1 - BALL_RADIUS)
         {
             
-            Balle_v.vitesse.x = (-Balle_v.vitesse.x);
+            Balle_v.vitesse.x = (-Balle_v.vitesse.x) * 0.9;
+            Balle_v.position.x = 1 - BALL_RADIUS;
             
         }
         
-        if(Balle_v.position.y < 0)
+        if(Balle_v.position.y < BALL_RADIUS)
         {
             
-            Balle_v.vitesse.y = (-Balle_v.vitesse.y)
+            Balle_v.vitesse.y = (-Balle_v.vitesse.y) * 0.9;
+            Balle_v.position.y = BALL_RADIUS;
             
         }
         
-        if(Balle_v.position.y > 1)
+        if(Balle_v.position.y > 1 - BALL_RADIUS)
         {
             
-            Balle_v.vitesse.y = (-Balle_v.vitesse.y)
-            
-        }
-        
-        if(Balle_v.vitesse.y 0.01 && Balle_v.vitesse.y && Balle_v.position.y < 0.03)
-        {
-            
-            Balle_v.position.y = 0.03;
+            Balle_v.vitesse.y = (-Balle_v.vitesse.y) * 0.9;
+            Balle_v.position.y = 1 - BALL_RADIUS;
             
         }
         
