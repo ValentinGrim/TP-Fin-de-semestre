@@ -24,7 +24,7 @@ void clicSouris(float x, float y)
     attracteurCurrent ++;
     attracteurCurrent %=NB_ATTRACTEURS;
     gAttractList.utiliseMoi = attracteurCurrent;
-    
+
 }
 
 
@@ -42,7 +42,7 @@ int main ( int argc, char** argv )
         fpsStep();
 
         // ----------------- TODO: remplacer par votre code --------------
-        majPosition(&Balle_v, dt);
+        majPosition(&Balle_v, &gAttractList, dt);
 
         if(Balle_v.position.x < BALL_RADIUS)
         {
