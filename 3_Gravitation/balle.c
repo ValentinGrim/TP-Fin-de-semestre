@@ -38,16 +38,24 @@ int majPosition(Balle * Balle_v, AttracteurList * pAttrList , float dt)         
   if (!Balle_v) return -1;
 
   else
-  { 
+  {
 
-    Vecteur P;                                      // Création du vecteur poidss
-    P = creerVect(0,0);
-	  
-    Vecteur f;                                      // Création du vecteur des forces de frottements fisqueux
-    f = multScalVect(-Balle_v->coeffriction,Balle_v->vitesse);
+    Vecteur S;
+    S = creerVect(0,0);                               // Le vecteur de la somme des forces de gravitation
 
-    Vecteur S;                                       // Le vecteur de la somme des forces
-    S = addVect(P,f);
+    int i;
+
+    for(i = 0; i < utiliseMoi; i++)
+    {
+
+      Vecteur direction = subVect(pAttrList->positionAttracteur[i],Balle_v->position); // Calcule Vecteur direction
+      float distance = normVect(direction); //Calcule norme du vecteur direction
+
+      Vecteur F = ((-0.1/(distance * distance))*direction); // Calcule force de gravitation de la planète i
+
+      S = addVect(S,F) // addition des vecteur pour force de gravitation total;
+    }
+
 
     Balle_v->acceleration = multScalVect(((float)1/Balle_v->masse),S);     //calcul de l’accélération courante grâce à l’équation (1)
 

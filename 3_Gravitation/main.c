@@ -1,20 +1,18 @@
-
 #include <stdlib.h>
 #include <unistd.h>
 #include <math.h>
-
+#include "vecteur.h"
 #include "sdl_stuff.h"
-
+#include "balle.h"
 #include "decl.h"
 #include "fpstimer.h"
 
 
-
-// fonction appellée lorsque l'on appuie avec le bouton gauche de la souris
+// fonction appellï¿½e lorsque l'on appuie avec le bouton gauche de la souris
 void clicSouris(float x, float y)
 {
     // NB : une variable locale declaree static ne perd pas sa valeur entre deux appels a la fonction
-    // son initialisation est effectué au tout premier appel de la fonction
+    // son initialisation est effectuï¿½ au tout premier appel de la fonction
     // on s'en sert ici pour savoir quel attracteur on est en train de positioner
     static int attracteurCurrent = 0 ;
 
@@ -30,7 +28,7 @@ void clicSouris(float x, float y)
 
 int main ( int argc, char** argv )
 {
-  // sert just à faire bouger la balle de test
+  // sert just ï¿½ faire bouger la balle de test
     float alpha = 0.0f;
 
     if(!sdl_startup())
@@ -50,7 +48,7 @@ int main ( int argc, char** argv )
         y = 0.5+0.3f*sinf(alpha);
         // ---------------------------------------------------------------
 
-        // TODO appeler cette fonction avec la position calculée pour la balle
+        // TODO appeler cette fonction avec la position calculï¿½e pour la balle
         sdl_setBallPosition(x,y);
 
     } while(sdl_loop());
