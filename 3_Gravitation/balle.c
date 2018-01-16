@@ -41,9 +41,8 @@ int majPosition(Balle * Balle_v, AttracteurList * pAttrList , float dt)         
   { 
 
     Vecteur P;                                      // Création du vecteur poidss
-    P = creerVect(0,-9.81);
-    P = multScalVect(Balle_v->masse,P);
-
+    P = creerVect(0,0);
+	  
     Vecteur f;                                      // Création du vecteur des forces de frottements fisqueux
     f = multScalVect(-Balle_v->coeffriction,Balle_v->vitesse);
 
