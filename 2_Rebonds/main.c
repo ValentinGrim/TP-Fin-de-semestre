@@ -26,30 +26,37 @@ int main ( int argc, char** argv )
         fpsStep();
 
         // ----------------- TODO: remplacer par votre code --------------
-       	float a=1,b=1, dt=fpsGetDeltaTime();
-       	majPosition(&Balle_v, dt);
-       	Balle_v.position.x=Balle_v.position.x*a;
-       	Balle_v.position.y=Balle_v.position.y*b;
-       	while((Balle_v.position.x<0 || Balle_v.position.x>1)||(Balle_v.position.y<0 || Balle_v.position.y>1))
-       	if(Balle_v.position.x<0)
+       	dt=fpsGetDeltaTime();
+        majPosition(&Balle_v, dt);
+        
+        if(Balle_v.position.x < 0)
         {
-       	a=-0.8;
-       				if(Balle_v.position.y<0)
-       				b=-0.8;
-       				else if(Balle_v.position.y>1)
-       				b=-0.8;
-       	}
-       	else if(Balle_v.position.x>1)
-       	{
-       	a=0.8;
-       				if(Balle_v.position.y<0)
-       				b=-0.8;
-       				else if(Balle_v.position.y>1)
-       				b=-0.8;
+            
+            Balle_v.vitesse.x = (-Balle_v.vitesse.x);
+            
         }
-        // ---------------------------------------------------------------
-
-        // TODO appeler cette fonction avec la position calcul�e pour la balle
+        
+        if(Balle_v.position.x > 1)
+        {
+            
+            Balle_v.vitesse.x = (-Balle_v.vitesse.x);
+            
+        }
+        
+        if(Balle_v.position.y < 0)
+        {
+            
+            Balle_v.vitesse.y = (-Balle_v.vitesse.y)
+            
+        }
+        
+        if(Balle_v.position.y > 1)
+        {
+            
+            Balle_v.vitesse.y = (-Balle_v.vitesse.y)
+            
+        }
+        
         printf("x est %f et y est %f et le temps est %f \n",Balle_v.position.x,Balle_v.position.y,dt);
         sdl_setBallPosition(Balle_v.position.x,Balle_v.position.y);
 
