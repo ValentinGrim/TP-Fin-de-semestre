@@ -18,7 +18,7 @@ void clicSouris(float x, float y)
     static int attracteurCurrent = 0 ;
 
     // TODO gerer les position de la liste des attracteurs ici
-    gAttractList.positionAttracteur[gAttractList.utiliseMoi] = creerVect(x,y);
+    gAttractList.positionAttracteur[attracteurCurrent] = creerVect(x,y);
 
     sdl_setAttracteurPosition(attracteurCurrent,x,y);
     attracteurCurrent ++;
@@ -31,6 +31,10 @@ void clicSouris(float x, float y)
 
 int main ( int argc, char** argv )
 {
+	
+    float dt;
+    Balle Balle_v;
+    Balle_v = chargerBalle(argv[1]);
 
     if(!sdl_startup())
         return -1;
@@ -42,8 +46,9 @@ int main ( int argc, char** argv )
         fpsStep();
 
         // ----------------- TODO: remplacer par votre code --------------
+        dt=fpsGetDeltaTime();
         majPosition(&Balle_v, &gAttractList, dt);
-
+	
         if(Balle_v.position.x < BALL_RADIUS)
         {
 
@@ -81,7 +86,7 @@ int main ( int argc, char** argv )
         // ---------------------------------------------------------------
 
         // TODO appeler cette fonction avec la position calcul�e pour la balle
-        sdl_setBallPosition(x,y);
+        sdl_setBallPosition(Balle_v.position.x,Balle_v.position.y);
 
     } while(sdl_loop());
     // end main loop
