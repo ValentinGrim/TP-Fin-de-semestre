@@ -51,7 +51,6 @@ int majPosition(Balle * Balle_v, AttracteurList * pAttrList , float dt)         
       {
         //Si Vecteur nul alors pas de planette dans le tableau donc pas d'action.
 
-      Vecteur direction = subVect(pAttrList->positionAttracteur[i],Balle_v->position); // Calcule Vecteur direction
       }
 
       else

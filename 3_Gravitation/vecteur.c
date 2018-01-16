@@ -53,13 +53,8 @@ Vecteur normaliseVect (Vecteur v)
 
 	}
 
-	else
-	{
-
-		v.x /= norme;
-		v.y /= norme;
-
-	}
+	v.x /= norme;
+	v.y /= norme;
 
 	return v;
 
