@@ -15,17 +15,14 @@
 Balle chargerBalle(char * chemin)
 {
 
-  Balle Balle_v;
+  Balle Balle_v;       			// Déclaration de la balle principale
+  FILE *pFichier = NULL; 		//initialisation du pointeur sur fichier à NULL
+  pFichier = fopen(chemin, "r"); 	//Ouverture fichier texte
 
-  FILE *pFichier = NULL; //init pointeur fichier NULL
-
-  pFichier = fopen(chemin, "r"); //Ouverture fichier texte
-
-  fscanf(pFichier, "masse %f\n", &Balle_v.masse); //Récupérer Valeur masse
-  fscanf(pFichier, "fCoef %f\n", &Balle_v.coeffriction); //Récuperer Valeur fcoef
-  fscanf(pFichier, "position %f %f\n", &Balle_v.position.x, &Balle_v.position.y); //Récupérer valeur position en x et y
-  fscanf(pFichier, "vitesse %f %f", &Balle_v.vitesse.x, &Balle_v.vitesse.y); // Récupérer valeur vitesse en x et y
-
+  fscanf(pFichier, "masse %f\n", &Balle_v.masse); 				  //Récupération de la valeur de la masse
+  fscanf(pFichier, "fCoef %f\n", &Balle_v.coeffriction); 			  //Récupération de la valeur du coef.friction
+  fscanf(pFichier, "position %f %f\n", &Balle_v.position.x, &Balle_v.position.y); //Récupéreration de la valeur position en x et y
+  fscanf(pFichier, "vitesse %f %f", &Balle_v.vitesse.x, &Balle_v.vitesse.y);	  // Récupérer valeur vitesse en x et y
   fclose(pFichier);
 
   return Balle_v;
@@ -33,7 +30,7 @@ Balle chargerBalle(char * chemin)
 }
 
 
-int majPosition(Balle * Balle_v, float dt)          // Met a jour la position de la balle en appliquant le PFD et retourne -1 si balle est NULL (securite) retourne -1 si balle est NULL (securite)
+int majPosition(Balle * Balle_v, float dt)          // Met a jour la position de la balle en appliquant le PFD et retourne -1 si balle est NULL (securite)
 {
 
   if (!Balle_v) return -1;
@@ -41,48 +38,46 @@ int majPosition(Balle * Balle_v, float dt)          // Met a jour la position de
   else
   { 
 
-    Vecteur P;                                      // Création du vecteur poidss
-    P = creerVect(0,-9.81);
-    P = multScalVect(Balle_v->masse,P);
+    Vecteur P = creerVect(0,-9.81);               			// Création du vecteur poids avec le vecteur g (gravité)
+    P = multScalVect(Balle_v->masse,P);					// Calcule du poids
 
-    Vecteur f;                                      // Création du vecteur des forces de frottements fisqueux
-    f = multScalVect(-Balle_v->coeffriction,Balle_v->vitesse);
+    Vecteur f = multScalVect(-Balle_v->coeffriction,Balle_v->vitesse);  // Création du vecteur des forces de frottements fisqueux
     
-    float k=200, l,lo=0.02 , s;
+    float k=200 ,l ,lo=0.02 ,s ;	// Déclaration et initialisation des valeurs utilisée dans la force de rappel du ressort
     
-    Vecteur I;
-    Vecteur F= creerVect(0,0);
-    Vecteur S;
-    S = addVect(P,f);
+    Vecteur I;				// Déclaration du vecteur normalisé (direction vers le point d'attache)
+    Vecteur F= creerVect(0,0);		// Déclaration de la force de rappel du ressort et initialisation à 0
+    Vecteur S = addVect(P,f);		// Déclaration de la somme des forces du poids et des forces de frottements
     
-    if(Balle_v->ballePrecedente != NULL)
+    
+    if(Balle_v->ballePrecedente != NULL)	// Vérifie si il y a une balle précédente
     {
     		
-    	I= subVect(Balle_v->position,Balle_v->ballePrecedente->position);
-    	l= normVect(I);
-    	s=-k*(l-lo);
+    	I= subVect(Balle_v->position,Balle_v->ballePrecedente->position);	// Soustrait le vecteur position de la balle avec le vecteur position de la balle précédente
+    	l= normVect(I);				// Calcule la norme du vecteur I
+    	s=-k*(l-lo);				// Calcule la première partie de la formule de la force de rappel du ressort
     	
-    	I= normaliseVect(I);
-        F=multScalVect( s, I);
-        S = addVect(S,F);
+    	I= normaliseVect(I);			// Normalise le vecteur I
+        F=multScalVect( s, I);			// Calcule la force de rappel du ressort
+        S = addVect(S,F);			// Calcule la somme des forces totales 
     }
-    if(Balle_v->balleSuivante != NULL)
+    if(Balle_v->balleSuivante != NULL)		// Vérifie si il y a une balle suivante
     {
-    	I= subVect(Balle_v->position,Balle_v->balleSuivante->position);
-    	l= normVect(I);
-    	s=-k*(l-lo);
+    	I= subVect(Balle_v->position,Balle_v->balleSuivante->position);		// Soustrait le vecteur position de la balle avec le vecteur position de la balle suivante
+    	l= normVect(I);				// Calcule la norme du vecteur I
+    	s=-k*(l-lo);				// Calcule la première partie de la formule de la force de rappel du ressort
     	
-    	I= normaliseVect(I);
-        F=multScalVect( s, I);
-        S = addVect(S,F);			// Le vecteur de la somme des forces
+    	I= normaliseVect(I);			// Normalise le vecteur I
+        F=multScalVect( s, I);			// Calcule la force de rappel du ressort
+        S = addVect(S,F);			// Calcule la somme des forces totales 
      }
    
     	
-    	Balle_v->acceleration = multScalVect(((float)1/Balle_v->masse),S);     //calcul 	de l’accélération courante grâce à l’équation (1)
+    	Balle_v->acceleration = multScalVect(((float)1/Balle_v->masse),S);     //calcul de l’accélération courante grâce à l’équation (1)
 
-    	Balle_v->vitesse = addVect(Balle_v->vitesse,(multScalVect(dt , Balle_v->acceleration)));	// Calcul de la nouvelle vitesse grâce à l'équation (2)
+    	Balle_v->vitesse = addVect(Balle_v->vitesse,(multScalVect(dt , Balle_v->acceleration)));      // Calcul de la nouvelle vitesse grâce à l'équation (2)
 
-   	Balle_v->position = addVect(Balle_v->position,(multScalVect(dt , Balle_v->vitesse))); //Calcul de la nouvelle position grâce a l'équation (3)
+   	Balle_v->position = addVect(Balle_v->position,(multScalVect(dt , Balle_v->vitesse)));    //Calcul de la nouvelle position grâce a l'équation (3)
 	
 	
     return 0;
