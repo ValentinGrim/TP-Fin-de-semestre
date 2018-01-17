@@ -11,9 +11,16 @@
 int main ( int argc, char** argv )
 {
 
-    float dt;
-    Balle Balle_v;
-    Balle_v = chargerBalle(argv[1]);
+    if (agrc < 3) //test des arguments entrée de le min quitter s'il n'y en a pas assez.
+    {
+
+      printf("Il manque un ou plusieurs arguments.");
+      return EXIT_FAILURE; // On quitte le programme
+
+    }
+    
+    float dt; // Variable delta donner le temps entre deux frame
+    Balle Balle_v = chargerBalle(argv[1]); //Déclaration de la balle et chargment des parametre du fichier texte.
 
     if(!sdl_startup())
         return -1;
@@ -25,43 +32,41 @@ int main ( int argc, char** argv )
         fpsStep();
 
         // ----------------- TODO: remplacer par votre code --------------
-       	dt=fpsGetDeltaTime();
-        majPosition(&Balle_v, dt);
-        
-        if(Balle_v.position.x < BALL_RADIUS)
+       	dt=fpsGetDeltaTime(); // Assigner le temsp entre deux frames a la variable dt
+        majPosition(&Balle_v, dt); //Met a jours la position de la balle
+
+        if(Balle_v.position.x < BALL_RADIUS) //Condition si balle touche le bord gauche
         {
-            
-            Balle_v.vitesse.x = (-Balle_v.vitesse.x) * 0.9;
-            Balle_v.position.x = BALL_RADIUS;
-            
+
+            Balle_v.vitesse.x = (-Balle_v.vitesse.x) * 0.9; //inversement de la vitesse pour faire partir la balle dans l'autre sens plus reduction de la vitesse (perte d'energie)
+            Balle_v.position.x = BALL_RADIUS; //Mise a jours de la position de la balle pour ne pas qu'elle sorte de l'écran
+
         }
-        
-        if(Balle_v.position.x > 1 - BALL_RADIUS)
+
+        if(Balle_v.position.x > 1 - BALL_RADIUS) //Condition si balle touche le bord droit
         {
-            
-            Balle_v.vitesse.x = (-Balle_v.vitesse.x) * 0.9;
-            Balle_v.position.x = 1 - BALL_RADIUS;
-            
+
+            Balle_v.vitesse.x = (-Balle_v.vitesse.x) * 0.9; //inversement de la vitesse pour faire partir la balle dans l'autre sens plus reduction de la vitesse (perte d'energie)
+            Balle_v.position.x = 1 - BALL_RADIUS; //Mise a jours de la position de la balle pour ne pas qu'elle sorte de l'écran
+
         }
-        
-        if(Balle_v.position.y < BALL_RADIUS)
+
+        if(Balle_v.position.y < BALL_RADIUS) //Condition si balle touche le bord bas
         {
-            
-            Balle_v.vitesse.y = (-Balle_v.vitesse.y) * 0.9;
-            Balle_v.position.y = BALL_RADIUS;
-            
+
+            Balle_v.vitesse.y = (-Balle_v.vitesse.y) * 0.9; //inversement de la vitesse pour faire partir la balle dans l'autre sens plus reduction de la vitesse (perte d'energie)
+            Balle_v.position.y = BALL_RADIUS; //Mise a jours de la position de la balle pour ne pas qu'elle sorte de l'écran
+
         }
-        
-        if(Balle_v.position.y > 1 - BALL_RADIUS)
-        {
-            
-            Balle_v.vitesse.y = (-Balle_v.vitesse.y) * 0.9;
-            Balle_v.position.y = 1 - BALL_RADIUS;
-            
+
+        if(Balle_v.position.y > 1 - BALL_RADIUS) //Condition si balle touche le bord haut
+
+            Balle_v.vitesse.y = (-Balle_v.vitesse.y) * 0.9; //inversement de la vitesse pour faire partir la balle dans l'autre sens plus reduction de la vitesse (perte d'energie)
+            Balle_v.position.y = 1 - BALL_RADIUS; //Mise a jours de la position de la balle pour ne pas qu'elle sorte de l'écran
+
         }
-        
-        printf("x est %f et y est %f et le temps est %f \n",Balle_v.position.x,Balle_v.position.y,dt);
-        sdl_setBallPosition(Balle_v.position.x,Balle_v.position.y);
+
+        sdl_setBallPosition(Balle_v.position.x,Balle_v.position.y); //Permet d'afficher la balle avec sa nouvelle position.
 
     }
     while(sdl_loop());
