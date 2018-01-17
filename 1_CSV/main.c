@@ -14,7 +14,13 @@
 int main(int agrc, char ** argv)
 {
 
-    if (agrc < 2) return EXIT_FAILURE; //test des arguments entrée de le min quitter s'il n'y en a pas assez.
+    if (agrc < 3) //test des arguments entrée de le min quitter s'il n'y en a pas assez.
+    {
+
+      printf("Il manque un ou plusieurs arguments.");
+      return EXIT_FAILURE; // On quitte le programme
+
+    }
 
     Balle Balle_v; // Déclaration dela balle principale
     Balle_v = chargerBalle(argv[1]); //Chargement de la balle avec les configuration comprise dans le fichier texte
