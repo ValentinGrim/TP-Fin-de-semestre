@@ -26,7 +26,7 @@ Balle chargerBalle(char * chemin)
   return Balle_v;
 }
 
-int majPosition(Balle * Balle_v, float dt)          // Met a jour la position de la balle en appliquant le PFD et retourne -1 si balle est NULL (securite) retourne -1 si balle est NULL (securite)
+int majPosition(Balle * Balle_v, float dt)          // Met a jour la position de la balle en appliquant le PFD et retourne -1 si balle est NULL (securite) 
 {
 
    if (!Balle_v) return -1;
