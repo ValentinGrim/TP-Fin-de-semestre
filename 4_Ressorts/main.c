@@ -104,7 +104,7 @@ int main ( int argc, char** argv )
         }
 
 
-        sdl_setBallPosition(i,gBalleTab[i].position.x,gBalleTab[i].position.y); //Affichage de chaqeu balle une par une
+        sdl_setBallPosition(i,gBalleTab[i].position.x,gBalleTab[i].position.y); //Affichage de chaque balle une par une
 
     }
 
