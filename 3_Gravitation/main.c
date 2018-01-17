@@ -7,7 +7,7 @@
 #include "decl.h"
 #include "fpstimer.h"
 
-AttracteurList gAttractList; //Variable générale du nombre et de la position des attracteurs
+AttracteurList gAttractList; //Variable global du nombre et de la position des attracteurs
 
     // fonction appell�e lorsque l'on appuie avec le bouton gauche de la souris
 void clicSouris(float x, float y)
