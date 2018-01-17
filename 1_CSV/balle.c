@@ -39,10 +39,8 @@ int majPosition(Balle * Balle_v, float dt)          // Met a jour la position de
 
     Vecteur f = multScalVect(-Balle_v->coeffriction,Balle_v->vitesse);      // Création du vecteur des forces de frottements fisqueux
     
-
     Vecteur S = addVect(P,f);                        // Le vecteur de la somme des forces
    
-
     Balle_v->acceleration = multScalVect(((float)1/Balle_v->masse),S);      //calcul de l’accélération courante grâce à l’équation (1)
     Balle_v->vitesse = addVect(Balle_v->vitesse,(multScalVect(dt , Balle_v->acceleration)));      // Calcul de la nouvelle vitesse grâce à l'équation (2)
     Balle_v->position = addVect(Balle_v->position,(multScalVect(dt , Balle_v->vitesse)));     //Calcul de la nouvelle position grâce a l'équation (3)
