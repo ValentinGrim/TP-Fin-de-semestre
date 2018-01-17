@@ -14,22 +14,22 @@
 int main(int agrc, char ** argv)
 {
 
-    if (agrc < 2) return EXIT_FAILURE;
+    if (agrc < 2) return EXIT_FAILURE; //test des arguments entrée de le min quitter s'il n'y en a pas assez.
 
-    Balle Balle_v;
-    Balle_v = chargerBalle(argv[1]);
+    Balle Balle_v; // Déclaration dela balle principale
+    Balle_v = chargerBalle(argv[1]); //Chargement de la balle avec les configuration comprise dans le fichier texte
 
-    FILE *pFichier = NULL;
-    pFichier = fopen(argv[2], "w");
+    FILE *pFichier = NULL; //Déclaration pointeur fichier
+    pFichier = fopen(argv[2], "w"); //ouverture csv et assignation du pointeur fichier
 
-    float t;
+    float t; //Variable de temps
 
-    for(t = 0.0; t <= 3; t += 0.01)
+    for(t = 0.0; t <= 3; t += 0.01) // Boucle de caclule de nouvelle position de la balle
     {
-        int secu;
-        fprintf(pFichier, "%f;%f;%f\n", t, Balle_v.position.x, Balle_v.position.y);
-        secu = majPosition(&Balle_v, 0.01);
-        if(secu == -1) return EXIT_FAILURE;
+        int secu; //Variable de sécuratié pour Balle null
+        fprintf(pFichier, "%f;%f;%f\n", t, Balle_v.position.x, Balle_v.position.y); //Ecriture de la position de la balle et du temps dans le csv
+        secu = majPosition(&Balle_v, 0.01); // Mise a jours avec les nouvelle coordonées, vitese et...
+        if(secu == -1) return EXIT_FAILURE; //Sécurité
 
 
 
