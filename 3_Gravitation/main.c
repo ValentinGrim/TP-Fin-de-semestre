@@ -9,21 +9,22 @@
 
 AttracteurList gAttractList;
 
-// fonction appell�e lorsque l'on appuie avec le bouton gauche de la souris
+    // fonction appell�e lorsque l'on appuie avec le bouton gauche de la souris
 void clicSouris(float x, float y)
 {
-    // NB : une variable locale declaree static ne perd pas sa valeur entre deux appels a la fonction
+    // NB : une variable locale declaree static ne perd pas sa valeur entre deux appels a 	la fonction
     // son initialisation est effectu� au tout premier appel de la fonction
     // on s'en sert ici pour savoir quel attracteur on est en train de positioner
     static int attracteurCurrent = 0 ;
 
     // TODO gerer les position de la liste des attracteurs ici
+    gAttractList.utiliseMoi[attracteurCurrent] = 1;
     gAttractList.positionAttracteur[attracteurCurrent] = creerVect(x,y);
 
     sdl_setAttracteurPosition(attracteurCurrent,x,y);
     attracteurCurrent ++;
     attracteurCurrent %=NB_ATTRACTEURS;
-    gAttractList.utiliseMoi[attracteurCurrent] = attracteurCurrent;
+    
 
 }
 
@@ -52,7 +53,7 @@ int main ( int argc, char** argv )
         if(Balle_v.position.x < BALL_RADIUS)
         {
 
-            Balle_v.vitesse.x = (-Balle_v.vitesse.x);
+            Balle_v.vitesse.x = (-Balle_v.vitesse.x) * 0.9;
             Balle_v.position.x = BALL_RADIUS;
 
         }
@@ -60,7 +61,7 @@ int main ( int argc, char** argv )
         if(Balle_v.position.x > 1 - BALL_RADIUS)
         {
 
-            Balle_v.vitesse.x = (-Balle_v.vitesse.x);
+            Balle_v.vitesse.x = (-Balle_v.vitesse.x) * 0.9;
             Balle_v.position.x = 1 - BALL_RADIUS;
 
         }
@@ -68,7 +69,7 @@ int main ( int argc, char** argv )
         if(Balle_v.position.y < BALL_RADIUS)
         {
 
-            Balle_v.vitesse.y = (-Balle_v.vitesse.y);
+            Balle_v.vitesse.y = (-Balle_v.vitesse.y) * 0.9;
             Balle_v.position.y = BALL_RADIUS;
 
         }
@@ -76,7 +77,7 @@ int main ( int argc, char** argv )
         if(Balle_v.position.y > 1 - BALL_RADIUS)
         {
 
-            Balle_v.vitesse.y = (-Balle_v.vitesse.y);
+            Balle_v.vitesse.y = (-Balle_v.vitesse.y) * 0.9;
             Balle_v.position.y = 1 - BALL_RADIUS;
 
         }

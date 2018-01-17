@@ -43,28 +43,11 @@ int majPosition(Balle * Balle_v, AttracteurList * pAttrList , float dt)         
     Vecteur S;
     S = creerVect(0,0);                               // Le vecteur de la somme des forces de gravitation
 
-    int i,a, imax = 0;
-    
-    for(a = 0; a < 5; a++)
+    int i;
+
+    for(i = 0; pAttrList->utiliseMoi[i]!=0; i++)
     {
-    	if(pAttrList->utiliseMoi[a]!=0)
-    	{
-    	
-    		imax ++;
-    		
-    	}
-    }
 
-    for(i = 0; i < imax ; i++)
-    {
-      if(pAttrList->positionAttracteur[i].x == 0 &&  pAttrList->positionAttracteur[i].y == 0)
-      {
-        //Si Vecteur nul alors pas de planette dans le tableau donc pas d'action.
-
-      }
-
-      else
-      {
 
         Vecteur direction = subVect(pAttrList->positionAttracteur[i],Balle_v->position); // Calcule Vecteur direction
         float distance = normVect(direction);
@@ -72,7 +55,7 @@ int majPosition(Balle * Balle_v, AttracteurList * pAttrList , float dt)         
  	 //Calcule norme du vecteur direction
 
 	float magnitude =(0.1/(distance * distance));
-	if (magnitude > 0.5)
+	if (magnitude > 1)
 	{
 	
 		magnitude = 0.5;
@@ -80,10 +63,9 @@ int majPosition(Balle * Balle_v, AttracteurList * pAttrList , float dt)         
 	}
 	
         Vecteur F = multScalVect(magnitude,direction); // Calcule force de gravitation de la planète i
+        Vecteur F2 = multScalVect(pAttrList->utiliseMoi[i],F);
 
-        S = addVect(S,F); // addition des vecteur pour force de gravitation total;
-
-      }
+        S = addVect(S,F2); // addition des vecteur pour force de gravitation total;
 
     }
 
