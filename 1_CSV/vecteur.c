@@ -10,7 +10,8 @@
 #include "vecteur.h"
 #include <stdlib.h>
 #include <stdio.h>
-Vecteur creerVect(float x,float y) // Retourne une structure Vecteur initialisee a (x,y)
+
+Vecteur creerVect(float x,float y)    // Retourne une structure Vecteur initialisée à (x,y)
 {
 	Vecteur v;
 	v.x=x;
