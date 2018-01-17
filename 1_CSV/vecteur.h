@@ -16,10 +16,7 @@ typedef struct Vecteur_decl
 } Vecteur;
 
 Vecteur creerVect(float x,float y);
-
 Vecteur multScalVect(float s, Vecteur v);
-
 Vecteur addVect(Vecteur v1, Vecteur v2);
 
-
-#endif /* vecteur_h */
+#endif 
