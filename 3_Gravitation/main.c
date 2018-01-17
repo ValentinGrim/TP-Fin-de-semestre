@@ -30,7 +30,7 @@ void clicSouris(float x, float y)
 int main ( int argc, char** argv )
 {
 
-    if (agrc < 3) //test des arguments entrée de le main quitter s'il n'y en a pas assez.
+    if (agrc < 2) //test des arguments entrée de le main quitter s'il n'y en a pas assez.
     {
 
       printf("Il manque un ou plusieurs arguments.");
@@ -69,7 +69,7 @@ int main ( int argc, char** argv )
 
         }
 
-        if(Balle_v.position.y < BALL_RADIUS) //Condition si balle touche le bord bas
+        if(Balle_v.position.y < BALL_RADIUS) //Condition si balle touche le bord haut
         {
 
             Balle_v.vitesse.y = (-Balle_v.vitesse.y) * 0.9; //inversement de la vitesse pour faire partir la balle dans l'autre sens plus reduction de la vitesse (perte d'energie)
@@ -77,7 +77,7 @@ int main ( int argc, char** argv )
 
         }
 
-        if(Balle_v.position.y > 1 - BALL_RADIUS) //Condition si balle touche le bord haut
+        if(Balle_v.position.y > 1 - BALL_RADIUS) //Condition si balle touche le bord bas
 
             Balle_v.vitesse.y = (-Balle_v.vitesse.y) * 0.9; //inversement de la vitesse pour faire partir la balle dans l'autre sens plus reduction de la vitesse (perte d'energie)
             Balle_v.position.y = 1 - BALL_RADIUS; //Mise a jours de la position de la balle pour ne pas qu'elle sorte de l'écran
