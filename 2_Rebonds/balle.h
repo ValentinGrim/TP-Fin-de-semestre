@@ -11,7 +11,7 @@
 
 #include "vecteur.h"
 
-typedef struct Balle_decl
+typedef struct Balle_decl             // Définition de la structure Balle_decl
 {
 
   float masse;              //Kilo
@@ -22,7 +22,7 @@ typedef struct Balle_decl
 
 } Balle;
 
-Balle chargerBalle(char * argc);
+Balle chargerBalle(char * argc);        // Prototype de la fonction chargerBalle
 
 int majPosition(Balle * Balle ,float dt);     // Prototype de la fonction majPosition
 
