@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <math.h>
 
-Vecteur creerVect(float x,float y) // Retourne une structure Vecteur initialisee a (x,y)
+Vecteur creerVect(float x,float y) // Retourne une structure Vecteur initialisée à (x,y)
 {
 	Vecteur v;
 	v.x=x;
@@ -21,7 +21,7 @@ Vecteur creerVect(float x,float y) // Retourne une structure Vecteur initialisee
 	return v;
 }
 
-Vecteur multScalVect(float s,Vecteur v) // Multiplie un scalaire avec un vecteur et retourne le resultat
+Vecteur multScalVect(float s,Vecteur v) // Multiplie un scalaire avec un vecteur et retourne le résultat
 {
 	Vecteur v1;
 	v1.x=s*v.x;
@@ -30,7 +30,7 @@ Vecteur multScalVect(float s,Vecteur v) // Multiplie un scalaire avec un vecteur
 	return v1;
 }
 
-Vecteur addVect(Vecteur v1,Vecteur v2) // Additionne 2 vecteurs et retourne le resultat
+Vecteur addVect(Vecteur v1,Vecteur v2) // Additionne 2 vecteurs et retourne le résultat
 {
 	Vecteur v3;
 	v3.x=v1.x+v2.x;
@@ -39,7 +39,7 @@ Vecteur addVect(Vecteur v1,Vecteur v2) // Additionne 2 vecteurs et retourne le r
 	return v3;
 }
 
-Vecteur normaliseVect (Vecteur v)
+Vecteur normaliseVect (Vecteur v) // Normalise un vecteur et retourne le résultat
 {
 
 	float norme = normVect(v);
@@ -60,7 +60,7 @@ Vecteur normaliseVect (Vecteur v)
 
 }
 
-float normVect(Vecteur v)
+float normVect(Vecteur v) // Calcule la norme d'un vecteur et retourne le résultat
 {
 
 	float norme;
@@ -69,7 +69,7 @@ float normVect(Vecteur v)
 	return norme;
 
 }
-Vecteur subVect(Vecteur v1, Vecteur v2)
+Vecteur subVect(Vecteur v1, Vecteur v2) // Soustrait 2 vecteurs et retourne le résultat
 {
 
 	Vecteur v3;
