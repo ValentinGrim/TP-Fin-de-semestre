@@ -8,12 +8,12 @@
 #include "fpstimer.h"
 
 
-Balle gBalleTab[NB_BALLES]; //Création du table de balles
+Balle gBalleTab[NB_BALLES]; 		// Création du tableau de balle
 
 void dragSouris(float x, float y)
 {
-    gBalleTab[0].position.x=x; //Récuperer la position x de la souris pour la position de la première balle
-    gBalleTab[0].position.y=y; //Récuperer la position y de la souris pour la position de la première balle
+    gBalleTab[0].position.x=x; 		//Récupération de la position x de la souris pour la position de la première balle
+    gBalleTab[0].position.y=y; 		//Récupération de la position y de la souris pour la position de la première balle
 }
 
 
@@ -21,11 +21,11 @@ void dragSouris(float x, float y)
 int main ( int argc, char** argv )
 {
 
-    if (agrc < 2) //test des arguments entrée de le main quitter s'il n'y en a pas assez.
+    if (agrc < 2) 		// Test du nombre minimum d'arguments d'entrée en console, quitte si il n'y en a pas assez.
     {
 
       printf("Il manque un ou plusieurs arguments.");
-      return EXIT_FAILURE; // On quitte le programme
+      return EXIT_FAILURE; 				// On quitte le programme
 
     }
 
@@ -34,29 +34,21 @@ int main ( int argc, char** argv )
 
     fpsInit();
 
-    float dt; // Variable delta donner le temps entre deux frames
+    float dt; 			// Déclaration de la variable delta
     int i;
-    for(i=0;i<NB_BALLES;i++) //Boucles principale pour calcule de la poistion de toute les balles.
+    for(i=0;i<NB_BALLES;i++) 	// Boucle pour créer le nombre de balle NB_BALLES
     {
-        gBalleTab[i] = chargerBalle(argv[1]); //Initiliser la struture balle avec les valeurs du fichier de configuration texte
+        gBalleTab[i] = chargerBalle(argv[1]); // Créer chaque balle du tableau avec les caractéristique du fichier balle.txt utilisé avec la fonction chargerBalle
 
-    // relier les balles entre elles
-    // ....
-	gBalleTab[0].ballePrecedente = NULL; // La premiere balle n'a pas deballe avant elle donc init a NULL
-	gBalleTab[0].balleSuivante = &gBalleTab[1]; // Relier a la balle suivante
+  	
+	gBalleTab[0].ballePrecedente = NULL; 		// Initialisation de la balle précèdant la première balle à NULL puisqu'elle n'existe pas
+	gBalleTab[0].balleSuivante = &gBalleTab[1]; 	// Relie la première balle à la balle suivante
 
-	//gBalleTab[i-1].ballePrecedente = &gBalleTab[i-2];
-	//gBalleTab[i-1].balleSuivante = &gBalleTab[i];
+	gBalleTab[i].ballePrecedente = &gBalleTab[i-1]; // Initialise chaque balle précèdante avec la balle précèdante dans le tableau
+	gBalleTab[i].balleSuivante = &gBalleTab[i+1]; 	// Initialise chaque balle suivante avec la balle suivante dans le tableau
 
-	gBalleTab[i].ballePrecedente = &gBalleTab[i-1]; //relie tout les autres valle entre elle
-	gBalleTab[i].balleSuivante = &gBalleTab[i+1]; // meme fonction
-
-	//gBalleTab[i+1].ballePrecedente = &gBalleTab[i];
-	//gBalleTab[i+1].balleSuivante = &gBalleTab[i+2];
-
-	gBalleTab[NB_BALLES-1].ballePrecedente = &gBalleTab[NB_BALLES-2]; //relie la derniere balle a l'avant derniere
-	gBalleTab[NB_BALLES-1].balleSuivante = NULL; // la derniere balle n'a pas de balle suivante donc init a NULL
-
+	gBalleTab[NB_BALLES-1].ballePrecedente = &gBalleTab[NB_BALLES-2]; 	// Relie la dernière balle à l'avant dernière balle
+	gBalleTab[NB_BALLES-1].balleSuivante = NULL;				// Initialisation de la balle suivant la dernière balle à NULL puisqu'elle n'existe pas
     }
     // program main loop
     do
@@ -64,47 +56,45 @@ int main ( int argc, char** argv )
 
         fpsStep();
 
-        // TODO : mettre a jour les balles
-        dt=fpsGetDeltaTime();  // Assigner le temsp entre deux frames a la variable dt
-    for(i=0; i<NB_BALLES; i++) // Boucle prinipale pour calcule sur toute les balles
+        dt=fpsGetDeltaTime();  		// Assigne le temps entre deux frames à la variable dt
+    for(i=0; i<NB_BALLES; i++) 		// Boucle qui met à jour la position de chaque balle, qui limite ses déplacement à la fenêtre et affiche la balle
     {
 
-        majPosition(&gBalleTab[i], dt); //Mise a jours de la position de chaque balle une par une en fonction de dt
+        majPosition(&gBalleTab[i], dt); 	// Mise à jour de la position de chaque balle en fonction de dt
 
-        if(gBalleTab[i].position.x < BALL_RADIUS) //Condition si balle touche le bord gauche
+        if(gBalleTab[i].position.x < BALL_RADIUS) 	// Condition si la balle touche le bord gauche
         {
 
-            gBalleTab[i].vitesse.x = (-gBalleTab[i].vitesse.x) * 0.9; //inversement de la vitesse pour faire partir la balle dans l'autre sens plus reduction de la vitesse (perte d'energie)
-            gBalleTab[i].position.x = BALL_RADIUS; //Mise a jours de la position de la balle pour ne pas qu'elle sorte de l'écran
+            gBalleTab[i].vitesse.x = (-gBalleTab[i].vitesse.x) * 0.9; // Inversement de la vitesse pour faire partir la balle dans l'autre sens et reduction de la vitesse (perte d'energie)
+            gBalleTab[i].position.x = BALL_RADIUS; 		      // Mise à jour de la position de la balle pour qu'elle ne sorte pas de l'écran
 
         }
 
-        if(gBalleTab[i].position.x > 1 - BALL_RADIUS) //Condition si balle touche le bord droit
+        if(gBalleTab[i].position.x > 1 - BALL_RADIUS) 	// Condition si la balle touche le bord droit
         {
 
-            gBalleTab[i].vitesse.x = (-gBalleTab[i].vitesse.x) * 0.9; //inversement de la vitesse pour faire partir la balle dans l'autre sens plus reduction de la vitesse (perte d'energie)
-            gBalleTab[i].position.x = 1 - BALL_RADIUS; //Mise a jours de la position de la balle pour ne pas qu'elle sorte de l'écran
+            gBalleTab[i].vitesse.x = (-gBalleTab[i].vitesse.x) * 0.9; // Inversement de la vitesse pour faire partir la balle dans l'autre sens et reduction de la vitesse (perte d'energie)
+            gBalleTab[i].position.x = 1 - BALL_RADIUS; 		      // Mise à jour de la position de la balle pour qu'elle ne sorte pas de l'écran
 
         }
 
-        if(gBalleTab[i].position.y < BALL_RADIUS) //Condition si balle touche le bord haut
+        if(gBalleTab[i].position.y < BALL_RADIUS) // Condition si la balle touche le bord du haut
         {
 
-           gBalleTab[i].vitesse.y = (-gBalleTab[i].vitesse.y) * 0.9; //inversement de la vitesse pour faire partir la balle dans l'autre sens plus reduction de la vitesse (perte d'energie)
-           gBalleTab[i].position.y = BALL_RADIUS; //Mise a jours de la position de la balle pour ne pas qu'elle sorte de l'écran
+           gBalleTab[i].vitesse.y = (-gBalleTab[i].vitesse.y) * 0.9; // Inversement de la vitesse pour faire partir la balle dans l'autre sens et reduction de la vitesse (perte d'energie)
+           gBalleTab[i].position.y = BALL_RADIUS; 		     // Mise à jour de la position de la balle pour qu'elle ne sorte pas de l'écran
+        }
+
+        if(gBalleTab[i].position.y > 1 - BALL_RADIUS) // Condition si la balle touche le bord du bas
+        {
+
+            gBalleTab[i].vitesse.y = (-gBalleTab[i].vitesse.y) * 0.9; // Inversement de la vitesse pour faire partir la balle dans l'autre sens et reduction de la vitesse (perte d'energie)
+            gBalleTab[i].position.y = 1 - BALL_RADIUS; 		      // Mise à jour de la position de la balle pour qu'elle ne sorte pas de l'écran
 
         }
 
-        if(gBalleTab[i].position.y > 1 - BALL_RADIUS) //Condition si balle touche le bord bas
-        {
 
-            gBalleTab[i].vitesse.y = (-gBalleTab[i].vitesse.y) * 0.9; //inversement de la vitesse pour faire partir la balle dans l'autre sens plus reduction de la vitesse (perte d'energie)
-            gBalleTab[i].position.y = 1 - BALL_RADIUS; //Mise a jours de la position de la balle pour ne pas qu'elle sorte de l'écran
-
-        }
-
-
-        sdl_setBallPosition(i,gBalleTab[i].position.x,gBalleTab[i].position.y); //Affichage de chaque balle une par une
+        sdl_setBallPosition(i,gBalleTab[i].position.x,gBalleTab[i].position.y); // Affichage de la balle
 
     }
 
