@@ -22,8 +22,7 @@ int main(int agrc, char ** argv)
 
     }
 
-    Balle Balle_v; // Déclaration dela balle principale
-    Balle_v = chargerBalle(argv[1]); //Chargement de la balle avec les configuration comprise dans le fichier texte
+    Balle Balle_v = chargerBalle(argv[1]); //Déclaration de la balle et chargment des parametre du fichier texte.
 
     FILE *pFichier = NULL; //Déclaration pointeur fichier
     pFichier = fopen(argv[2], "w"); //ouverture csv et assignation du pointeur fichier
@@ -32,12 +31,10 @@ int main(int agrc, char ** argv)
 
     for(t = 0.0; t <= 3; t += 0.01) // Boucle de caclule de nouvelle position de la balle
     {
-        int secu; //Variable de sécuratié pour Balle null
+
         fprintf(pFichier, "%f;%f;%f\n", t, Balle_v.position.x, Balle_v.position.y); //Ecriture de la position de la balle et du temps dans le csv
-        secu = majPosition(&Balle_v, 0.01); // Mise a jours avec les nouvelle coordonées, vitese et...
+        int secu = majPosition(&Balle_v, 0.01); // Mise a jours avec les nouvelle coordonées, vitese ect... +  renvoi -1 a secu si Balle NULL
         if(secu == -1) return EXIT_FAILURE; //Sécurité
-
-
 
     }
 
