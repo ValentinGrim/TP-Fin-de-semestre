@@ -11,7 +11,7 @@
 
 #include "vecteur.h"
 
-typedef struct Balle_decl
+typedef struct Balle_decl			// Définition de la structure Balle_decl
 {
 
   float masse;              //Kilo
