@@ -11,14 +11,14 @@
 int main ( int argc, char** argv )
 {
 
-    if (agrc < 3) //test des arguments entrée de le min quitter s'il n'y en a pas assez.
+    if (agrc < 3) //test des arguments entrée de le main quitter s'il n'y en a pas assez.
     {
 
       printf("Il manque un ou plusieurs arguments.");
       return EXIT_FAILURE; // On quitte le programme
 
     }
-    
+
     float dt; // Variable delta donner le temps entre deux frame
     Balle Balle_v = chargerBalle(argv[1]); //Déclaration de la balle et chargment des parametre du fichier texte.
 

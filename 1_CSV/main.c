@@ -14,7 +14,7 @@
 int main(int agrc, char ** argv)
 {
 
-    if (agrc < 3) //test des arguments entrée de le min quitter s'il n'y en a pas assez.
+    if (agrc < 3) //test des arguments entrée de le main quitter s'il n'y en a pas assez.
     {
 
       printf("Il manque un ou plusieurs arguments.");
