@@ -10,7 +10,7 @@
 AttracteurList gAttractList;    // Variable global du nombre et de la position des attracteurs
 
     
-void clicSouris(float x, float y)       // fonction appellée lorsque l'on appuie avec le bouton gauche de la souris
+void clicSouris(float x, float y)       // Fonction appellée lorsque l'on appuie avec le bouton gauche de la souris
 {
     // NB : une variable locale declaree static ne perd pas sa valeur entre deux appels a 	la fonction
     // son initialisation est effectué au tout premier appel de la fonction
