@@ -18,6 +18,11 @@ void clicSouris(float x, float y)  //Clique souris de Gravitation
 
 int main()
 {
+
+  config cfg;
+  cfg.size_x = 512;
+  cfg.size_y = 512;
+
   SDL_Rect position;
 
   SDL_Surface * bPlayImg;
@@ -25,6 +30,7 @@ int main()
   SDL_Surface * bExitImg;
 
   SDL_Surface *window = NULL;
+
   SDL_Event event;
 
   SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER);
@@ -34,7 +40,7 @@ int main()
   if (window == NULL)
   {
 
-      printf("Impossible d'ouvrir la fenêtre : %s\n", SDL_GetError());
+      printf("Unable to open menu : %s\n", SDL_GetError());
       exit(EXIT_FAILURE);
 
   }
@@ -59,10 +65,24 @@ int main()
         break;
 
         case SDL_MOUSEBUTTONUP:
-          if(event.button.y > 422 && event.button.y < 474 && event.button.x > 27 && event.button.x < 229)
+          if(event.button.y > 422 && event.button.y < 474 && event.button.x > 27 && event.button.x < 229 &SDL_BUTTON_LEFT)
           {
 
               continuer = 0;
+
+          }
+
+          if(event.button.y > 38 && event.button.y < 89 && event.button.x > 27 && event.button.x < 229 &SDL_BUTTON_LEFT)
+          {
+
+              continuer = 2;
+
+          }
+
+          if(event.button.y > 166 && event.button.y < 218 && event.button.x > 27 && event.button.x < 229 &SDL_BUTTON_LEFT)
+          {
+
+              continuer = 3;
 
           }
         break;
@@ -86,6 +106,20 @@ int main()
   }
 
   sdl_clean();
+
+  if(continuer == 2)
+  {
+
+    sdlPlay(cfg);
+
+  }
+
+  if(continuer == 3)
+  {
+
+    sdlSettings(cfg);
+
+  }
 
   return 0;
 
