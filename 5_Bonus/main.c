@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <math.h>
 #include"sdl_stuff.h"
-#include "decl.h"
+
 #include "fpstimer.h"
 #include <stdio.h>
 #include <SDL/SDL.h>
@@ -18,6 +18,14 @@ void clicSouris(float x, float y)  //Clique souris de Gravitation
 
 int main()
 {
+<<<<<<< HEAD
+=======
+  SDL_Rect position;
+
+  SDL_Surface * bPlayImg;
+  SDL_Surface * bSetImg;
+  SDL_Surface * bExitImg;
+>>>>>>> b95703db88dd0efa7004cf796532a95737ccae90
 
   SDL_Surface *window = NULL;
   SDL_Event event;
@@ -42,7 +50,7 @@ int main()
   bExitImg = SDL_LoadBMP("Button_Exit.bmp");
 
   int continuer = 1;
-  while(continuer)
+  while(continuer == 1)
   {
 
     SDL_WaitEvent(&event);
@@ -60,15 +68,23 @@ int main()
               continuer = 0;
 
           }
-          break;
+        break;
 
     }
 
     SDL_Flip(window);
 
-    SDL_BlitSurface(bPlayImg, NULL, window, &bPlay);
-    SDL_BlitSurface(bSetImg, NULL, window, &bSet);
-    SDL_BlitSurface(bExitImg, NULL, windows, &bExit);
+    position.x = 28;
+    position.y = 39;
+    SDL_BlitSurface(bPlayImg, NULL, window, &position);
+
+    position.x = 28;
+    position.y = 167;
+    SDL_BlitSurface(bSetImg, NULL, window, &position);
+
+    position.x = 28;
+    position.y = 423;
+    SDL_BlitSurface(bExitImg, NULL, window, &position);
 
   }
 
