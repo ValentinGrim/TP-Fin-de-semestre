@@ -1,4 +1,5 @@
 #include "sdl_stuff.h"
+#include "sdl_win.h"
 #include <unistd.h>
 
 
@@ -8,7 +9,7 @@ SDL_Surface * screen;
 float x_pos = 0.0f;
 float y_pos = 0.0f;
 
-int sdl_startup()
+int sdl_startup(config cfg)
 {
     // initialize SDL video
     if ( SDL_Init( SDL_INIT_VIDEO ) < 0 )
@@ -85,7 +86,7 @@ int sdl_loop()
 
     // finally, update the screen :)
     SDL_Flip(screen);
-	
+
 	usleep(1000);
 
     return 1;

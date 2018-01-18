@@ -21,8 +21,6 @@ typedef struct configuration_decl
 
 }config;
 
-sdlPlay(config * cfg);
-
 sdlSettings(config * cfg);
 
 #endif
