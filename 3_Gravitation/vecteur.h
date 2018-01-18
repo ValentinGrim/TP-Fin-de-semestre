@@ -1,6 +1,6 @@
 //
 //  vecteur.h
-//  CSV
+//  Gravitation
 //
 //  Created by Valentin Monnot / Josselin Pichereau on 15/01/2018.
 //  Evalution TP Final
@@ -24,4 +24,4 @@ Vecteur normaliseVect (Vecteur v);		// Prototype de la fonction normaliseVect
 float normVect(Vecteur v);			// Prototype de la fonction normVect
 Vecteur subVect(Vecteur v1, Vecteur v2);	// Prototype de la fonction subVect
 
-#endif 
+#endif

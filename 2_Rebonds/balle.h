@@ -1,6 +1,6 @@
 //
 //  balle.h
-//  CSV
+//  Rebonds
 //
 //  Created by Valentin Monnot / Josselin Pichereau on 15/01/2018.
 //  Evalution TP Final
@@ -26,4 +26,4 @@ Balle chargerBalle(char * argc);        // Prototype de la fonction chargerBalle
 
 int majPosition(Balle * Balle ,float dt);     // Prototype de la fonction majPosition
 
-#endif 
+#endif

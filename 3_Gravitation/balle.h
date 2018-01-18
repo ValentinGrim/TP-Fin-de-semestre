@@ -1,6 +1,6 @@
 //
 //  balle.h
-//  CSV
+//  Gravitation
 //
 //  Created by Valentin Monnot / Josselin Pichereau on 15/01/2018.
 //  Evalution TP Final
@@ -36,4 +36,4 @@ int majPosition(Balle * Balle, AttracteurList * pAttrList ,float dt);     // Met
 
 void initAttracteurList(AttracteurList * pAttrList);		// Prototype de la fonction initAttracteurList
 
-#endif 
+#endif
