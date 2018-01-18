@@ -22,7 +22,7 @@ Balle chargerBalle(char * chemin)
   {
 
     printf("Problème lors de l'ouverture du fichier de configuration.");
-    return EXIT_FAILURE;
+    exit(EXIT_FAILURE);
 
   }
 
