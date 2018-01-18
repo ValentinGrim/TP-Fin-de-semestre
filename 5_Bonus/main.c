@@ -61,10 +61,10 @@ int main()
     {
 
       case SDL_QUIT:
-        continuer = 0;
-        break;
+          continuer = 0;
+          break;
 
-        case SDL_MOUSEBUTTONUP:
+      case SDL_MOUSEBUTTONUP:
           if(event.button.y > 422 && event.button.y < 474 && event.button.x > 27 && event.button.x < 229 &SDL_BUTTON_LEFT)
           {
 
@@ -85,7 +85,7 @@ int main()
               continuer = 3;
 
           }
-        break;
+      break;
 
     }
 
