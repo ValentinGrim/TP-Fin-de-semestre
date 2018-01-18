@@ -22,8 +22,8 @@ typedef struct Balle_decl             // Définition de la structure Balle_decl
 
 } Balle;
 
-Balle chargerBalle(char * argc);        // Prototype de la fonction chargerBalle
+Balle chargerBalle(char * argc);        	// Prototype de la fonction chargerBalle
 
-int majPosition(Balle * Balle ,float dt);     // Prototype de la fonction majPosition
+int majPosition(Balle * Balle ,float dt);     	// Prototype de la fonction majPosition
 
 #endif 

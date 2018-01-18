@@ -32,7 +32,7 @@ typedef struct AttracteurList_decl		// Définition de la structure AttracteurLis
 
 Balle chargerBalle(char * argc);		// Prototype de la fonction chargerBalle
 
-int majPosition(Balle * Balle, AttracteurList * pAttrList ,float dt);     // Met a jour la position de la balle en appliquant le PFD
+int majPosition(Balle * Balle, AttracteurList * pAttrList ,float dt);     // Mise a jour de la position de la balle en appliquant le PFD
 
 void initAttracteurList(AttracteurList * pAttrList);		// Prototype de la fonction initAttracteurList
 

@@ -12,13 +12,14 @@ AttracteurList gAttractList;    // Variable global du nombre et de la position d
 
 void clicSouris(float x, float y)       // Fonction appellée lorsque l'on appuie avec le bouton gauche de la souris
 {
-    // NB : une variable locale declaree static ne perd pas sa valeur entre deux appels a 	la fonction
+    // NB : une variable locale declaree static ne perd pas sa valeur entre deux appels a la fonction
     // son initialisation est effectué au tout premier appel de la fonction
     // on s'en sert ici pour savoir quel attracteur on est en train de positioner
+    
     static int attracteurCurrent = 0 ;
 
-    gAttractList.utiliseMoi[attracteurCurrent] = 1; // Mettre la variable utiliseMoi à 1 si un attracteur a été posé (initialement a 0)
-    gAttractList.positionAttracteur[attracteurCurrent] = creerVect(x,y); // Créé le vecteur positionAttracteur avec les valeurs x et y du clic souris
+    gAttractList.utiliseMoi[attracteurCurrent] = 1; 				// Mettre la variable utiliseMoi à 1 si un attracteur a été posé (initialement a 0)
+    gAttractList.positionAttracteur[attracteurCurrent] = creerVect(x,y); 	// Créer le vecteur positionAttracteur avec les valeurs x et y du clic souris
 
     sdl_setAttracteurPosition(attracteurCurrent,x,y);
     attracteurCurrent ++;
@@ -36,9 +37,9 @@ int main ( int argc, char** argv )
       return EXIT_FAILURE; // On quitte le programme
 
     }
-    float dt; // Déclaration de la variable delta
-    Balle Balle_v = chargerBalle(argv[1]); // Déclaration de la balle et chargement des paramètres du fichier texte.
-    initAttracteurList(&gAttractList); //initialisation des attracteur a 0
+    float dt; 					// Déclaration de la variable delta
+    Balle Balle_v = chargerBalle(argv[1]); 	// Déclaration de la balle et chargement des paramètres du fichier texte.
+    initAttracteurList(&gAttractList); 		// Initialisation des attracteurs à 0
 
     if(!sdl_startup())
         return -1;
@@ -51,7 +52,7 @@ int main ( int argc, char** argv )
 
 
         dt=fpsGetDeltaTime(); // Assigne le temps entre deux frames à la variable dt
-        majPosition(&Balle_v, &gAttractList, dt); // Met à jour la position de la balle en fonction de dt et de la liste des attracteurs
+        majPosition(&Balle_v, &gAttractList, dt); // Mise à jour de la position de la balle en fonction de dt et de la liste des attracteurs
 
         if(Balle_v.position.x < BALL_RADIUS) // Condition si balle touche le bord gauche
         {

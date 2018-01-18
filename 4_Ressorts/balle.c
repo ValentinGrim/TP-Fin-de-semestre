@@ -18,14 +18,15 @@ Balle chargerBalle(char * chemin)
   Balle Balle_v;       			// Déclaration de la balle principale
   FILE *pFichier = NULL; 		// Initialisation du pointeur sur fichier à NULL
   pFichier = fopen(chemin, "r"); 	// Ouverture du fichier texte
+  
   if(!pFichier)
   {
 
-    printf("Problème lors de l'ouverture du fichier de configuration.");
+    printf("Problème lors de l'ouverture du fichier de configuration.\n");
     exit(EXIT_FAILURE);
-
-  }
-
+    
+  } 
+  
   fscanf(pFichier, "masse %f\n", &Balle_v.masse); 				  // Récupération de la valeur de la masse
   fscanf(pFichier, "fCoef %f\n", &Balle_v.coeffriction); 			  // Récupération de la valeur du coef.friction
   fscanf(pFichier, "position %f %f\n", &Balle_v.position.x, &Balle_v.position.y); // Récupéreration de la valeur position en x et y
@@ -70,29 +71,30 @@ int majPosition(Balle * Balle_v, float dt)          // Mise à jour de la positi
     {
 
       I= subVect(Balle_v->position,Balle_v->ballePrecedente->position);	// Soustrait le vecteur position de la balle avec le vecteur position de la balle précédente
-      l= normVect(I);				// Calcule la norme du vecteur I
-      s=-k*(l-lo);				// Calcule la première partie de la formule de la force de rappel du ressort
-      
-      I= normaliseVect(I);	  		// Normalise le vecteur I
-      b=normaliseVect(I);			// Appel une fonction vérifiant si le vecteur normalisé n'égal pas 0
+      l= normVect(I);							// Calcule la norme du vecteur I
+      s=-k*(l-lo);							// Calcule la première partie de la formule de la force de rappel du ressort
+      I= normaliseVect(I);	  					// Normalise le vecteur I
+      b= normalVectnot(I);						// Appel une fonction vérifiant si le vecteur normalisé n'égal pas 0
+      	 
       	 if(b==0)
      	 {
-     	 F=multScalVect( s, I);			// Calcule la force de rappel du ressort
-     	 S = addVect(S,F);			// Calcule la somme des forces totales
+     	 F=multScalVect( s, I);						// Calcule la force de rappel du ressort
+     	 S = addVect(S,F);						// Calcule la somme des forces totales
     	 }
     }
+    
     if(Balle_v->balleSuivante != NULL)		// Vérifie si il y a une balle suivante
     {
-      I= subVect(Balle_v->position,Balle_v->balleSuivante->position);		// Soustrait le vecteur position de la balle avec le vecteur position de la balle suivanteante
-      l= normVect(I);				// Calcule la norme du vecteur I
-      s=-k*(l-lo);				// Calcule la première partie de la formule de la force de rappel du ressort
-
-      I= normaliseVect(I);			// Normalise le vecteur I
-      b=normaliseVect(I);			// Appel une fonction vérifiant si le vecteur normalisé n'égal pas 0
+      I= subVect(Balle_v->position,Balle_v->balleSuivante->position);	// Soustrait le vecteur position de la balle avec le vecteur position de la balle suivanteante
+      l= normVect(I);							// Calcule la norme du vecteur I
+      s=-k*(l-lo);							// Calcule la première partie de la formule de la force de rappel du ressort
+      I= normaliseVect(I);						// Normalise le vecteur I
+      b= normalVectnot(I);						// Appel une fonction vérifiant si le vecteur normalisé n'égal pas 0
+      	
       	if(b==0)
       	{
-      	F=multScalVect( s, I);			// Calcule la force de rappel du ressort
-      	S = addVect(S,F);			// Calcule la somme des forces totales
+      	F=multScalVect( s, I);						// Calcule la force de rappel du ressort
+      	S = addVect(S,F);						// Calcule la somme des forces totales
       	}
     }
 
