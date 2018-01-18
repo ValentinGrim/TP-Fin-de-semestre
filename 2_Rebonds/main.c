@@ -11,7 +11,7 @@
 int main ( int argc, char** argv )
 {
 
-    if (agrc < 2) // Test du nombre d'arguments minimum d'entrée en console sinon quitte si il n'y en a pas assez.
+    if (argc < 2) // Test du nombre d'arguments minimum d'entrée en console sinon quitte si il n'y en a pas assez.
     {
 
       printf("Il manque un ou plusieurs arguments.");
@@ -58,7 +58,8 @@ int main ( int argc, char** argv )
             Balle_v.position.y = BALL_RADIUS;               // Mise à jour de la position de la balle pour qu'elle ne sorte pas de l'écran
         }
 
-        if(Balle_v.position.y > 1 - BALL_RADIUS) // Condition si balle touche le bord bas
+        if(Balle_v.position.y > 1 - BALL_RADIUS)	// Condition si balle touche le bord bas
+        { 
 
             Balle_v.vitesse.y = (-Balle_v.vitesse.y) * 0.9; // Inversement de la vitesse pour faire partir la balle dans l'autre sens et reduction de la vitesse (perte d'energie)
             Balle_v.position.y = 1 - BALL_RADIUS;           // Mise à jour de la position de la balle pour qu'elle ne sorte pas de l'écran

@@ -1,6 +1,6 @@
 //
 //  balle.c
-//  Gravitation
+//  CSV
 //
 //  Created by Valentin Monnot / Josselin Pichereau on 15/01/2018.
 //  Evalution TP Final
@@ -51,12 +51,12 @@ int majPosition(Balle * Balle_v, AttracteurList * pAttrList , float dt)         
 	float magnitude =(0.1/(distance * distance));		// Calcule la magnitude de la force de Gravitation
 	if (magnitude > 1)					// Restreint la magnitude quand elle est supérieur à 1
 	{
-
+	
 		magnitude = 0.5;
-
+		
 	}
-
-        Vecteur F = multScalVect(magnitude,direction);		// Calcule la force de gravitation
+	
+        Vecteur F = multScalVect(magnitude,direction);		// Calcule la force de gravitation 
         Vecteur F2 = multScalVect(pAttrList->utiliseMoi[i],F);	// Sécurité si il n'y a pas d'attracteur
 
         S = addVect(S,F2);	// Vecteur de la somme des forces
@@ -81,8 +81,8 @@ void initAttracteurList(AttracteurList * pAttrList)	// Initialisation des attrac
 	for(i = 0; i < 5; i++)
 	{
 
-		pAttrList->positionAttracteur[i].x = 0;
-		pAttrList->positionAttracteur[i].y = 0;
+		pAttrList->positionAttracteur[i].x = 0;		
+		pAttrList->positionAttracteur[i].y = 0;		
 		pAttrList->utiliseMoi[i] = 0;
 
 	}

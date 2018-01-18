@@ -1,6 +1,6 @@
 //
 //  vecteur.h
-//  Rebonds
+//  CSV
 //
 //  Created by Valentin Monnot / Josselin Pichereau on 15/01/2018.
 //  Evalution TP Final
@@ -19,4 +19,4 @@ Vecteur creerVect(float x,float y);		// Prototype de la fonction creerVect
 Vecteur multScalVect(float s, Vecteur v);	// Prototype de la fonction multScalVect
 Vecteur addVect(Vecteur v1, Vecteur v2);	// Prototype de la fonction addvect
 
-#endif
+#endif 
