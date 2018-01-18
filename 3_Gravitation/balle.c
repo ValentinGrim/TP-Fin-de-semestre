@@ -46,27 +46,28 @@ int majPosition(Balle * Balle_v, AttracteurList * pAttrList , float dt)         
     S = creerVect(0,0);                               // Le vecteur de la somme des forces de gravitation
 
     int i;
-
-    for(i = 0; pAttrList->utiliseMoi[i]!=0; i++)
+    if(i < NB_ATTRACTEURS) //Sécurité tableau
     {
 
+      for(i = 0; pAttrList->utiliseMoi[i]!=0; i++) //Boucles pour calcule de toute les forces d'attraction des attracteurs.
+      {
 
-        Vecteur direction = subVect(pAttrList->positionAttracteur[i],Balle_v->position); // Calcule Vecteur direction
-        float distance = normVect(direction);						 // Calcule norme du vecteur direction
-        direction = normaliseVect(direction);						 // Normalise le vecteur direction
+          Vecteur direction = subVect(pAttrList->positionAttracteur[i],Balle_v->position); // Calcule Vecteur direction
+          float distance = normVect(direction);						 // Calcule norme du vecteur direction
+          direction = normaliseVect(direction);						 // Normalise le vecteur direction
 
-	float magnitude =(0.1/(distance * distance));		// Calcule la magnitude de la force de Gravitation
-	if (magnitude > 1)					// Restreint la magnitude quand elle est supérieur à 1
-	{
+	         float magnitude =(0.1/(distance * distance));		// Calcule la magnitude de la force de Gravitation
+	         if (magnitude > 1)					// Restreint la magnitude quand elle est supérieur à 1
+	           {
 
-		magnitude = 0.5;
+		             magnitude = 0.5;
 
-	}
+	           }
 
-        Vecteur F = multScalVect(magnitude,direction);		// Calcule la force de gravitation
-        Vecteur F2 = multScalVect(pAttrList->utiliseMoi[i],F);	// Sécurité si il n'y a pas d'attracteur
+          Vecteur F = multScalVect(magnitude,direction);		// Calcule la force de gravitation
+          Vecteur F2 = multScalVect(pAttrList->utiliseMoi[i],F);	// Sécurité si il n'y a pas d'attracteur
 
-        S = addVect(S,F2);	// Vecteur de la somme des forces
+          S = addVect(S,F2);	// Vecteur de la somme des forces
 
     }
 
