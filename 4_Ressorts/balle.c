@@ -36,6 +36,15 @@ Balle chargerBalle(char * chemin)
 
 }
 
+int normalVectnot(Vecteur v1)
+{
+	if(v1.x == 0 && v1.y == 0)
+	return 1;
+	
+	else
+	return 0;
+  
+}
 
 int majPosition(Balle * Balle_v, float dt)          // Met a jour la position de la balle en appliquant le PFD et retourne -1 si balle est NULL (securite)
 {
@@ -55,7 +64,7 @@ int majPosition(Balle * Balle_v, float dt)          // Met a jour la position de
     Vecteur I;				// Déclaration du vecteur normalisé (direction vers le point d'attache)
     Vecteur F= creerVect(0,0);		// Déclaration de la force de rappel du ressort et initialisation à 0
     Vecteur S = addVect(P,f);		// Déclaration de la somme des forces du poids et des forces de frottements
-
+    int b;
 
     if(Balle_v->ballePrecedente != NULL)	// Vérifie si il y a une balle précédente
     {
@@ -64,9 +73,13 @@ int majPosition(Balle * Balle_v, float dt)          // Met a jour la position de
     	l= normVect(I);				// Calcule la norme du vecteur I
     	s=-k*(l-lo);				// Calcule la première partie de la formule de la force de rappel du ressort
 
-    	I= normaliseVect(I);			// Normalise le vecteur I
-        F=multScalVect( s, I);			// Calcule la force de rappel du ressort
-        S = addVect(S,F);			// Calcule la somme des forces totales
+    	I= normaliseVect(I);	  // Normalise le vecteur I
+      b=normaliseVect(I);
+      if(b==0)
+      {
+      F=multScalVect( s, I);			// Calcule la force de rappel du ressort
+      S = addVect(S,F);			      // Calcule la somme des forces totales
+      }
     }
     if(Balle_v->balleSuivante != NULL)		// Vérifie si il y a une balle suivante
     {
@@ -75,8 +88,12 @@ int majPosition(Balle * Balle_v, float dt)          // Met a jour la position de
     	s=-k*(l-lo);				// Calcule la première partie de la formule de la force de rappel du ressort
 
     	I= normaliseVect(I);			// Normalise le vecteur I
-        F=multScalVect( s, I);			// Calcule la force de rappel du ressort
-        S = addVect(S,F);			// Calcule la somme des forces totales
+      b=normaliseVect(I);
+      if(b==0)
+      {
+      F=multScalVect( s, I);			// Calcule la force de rappel du ressort
+      S = addVect(S,F);			// Calcule la somme des forces totales
+      }
      }
 
 
