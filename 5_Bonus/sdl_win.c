@@ -1,12 +1,137 @@
 #include "sdl_win.h"
+#include "sdl_stuff.h"
 #include <unistd.h>
+#include <SDL/SDL_mixer.h>
 
-sdlSettings(config * cfg)
+int sdlMenu(config cfg)
 {
 
   SDL_Rect position;
 
-  SDL_Surface * b431Img, * b432Img, * b1691Img, * b1692Img;
+  SDL_Surface * bPlayImg;
+  SDL_Surface * bSetImg;
+  SDL_Surface * bExitImg;
+  SDL_Surface * background;
+  Mix_Music * musique;
+
+  SDL_Surface *window = NULL;
+
+  SDL_Event event;
+
+  SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER);
+
+  window = SDL_SetVideoMode(256, 512, 32,SDL_HWSURFACE|SDL_DOUBLEBUF);
+
+  if (window == NULL)
+  {
+
+      printf("Unable to open menu : %s\n", SDL_GetError());
+      exit(EXIT_FAILURE);
+
+  }
+
+  SDL_WM_SetCaption("Meme Bonus", NULL);
+  SDL_FillRect(window, NULL, SDL_MapRGB(window->format,0,0,0));
+
+  bPlayImg = SDL_LoadBMP("Button_Play.bmp");
+  bSetImg = SDL_LoadBMP("Button_Settings.bmp");
+  bExitImg = SDL_LoadBMP("Button_Exit.bmp");
+  background = SDL_LoadBMP("menu.bmp");
+
+  if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
+
+  {
+
+    printf("%s", Mix_GetError());
+
+  }
+
+  if(cfg.music_state == 1)
+  {
+
+    musique = Mix_LoadMUS("menu.mp3");
+    Mix_PlayMusic(musique, -1);
+
+  }
+
+  int continuer = 1;
+  while(continuer == 1)
+  {
+
+    SDL_WaitEvent(&event);
+    switch(event.type)
+    {
+
+      case SDL_QUIT:
+          continuer = 0;
+          break;
+
+      case SDL_MOUSEBUTTONUP:
+          if((event.button.y > 422 && event.button.y < 474 && event.button.x > 27 && event.button.x < 229) &SDL_BUTTON_LEFT)
+          {
+
+              continuer = 0;
+
+          }
+
+          if((event.button.y > 38 && event.button.y < 89 && event.button.x > 27 && event.button.x < 229) &SDL_BUTTON_LEFT)
+          {
+
+              continuer = 2;
+
+          }
+
+          if((event.button.y > 166 && event.button.y < 218 && event.button.x > 27 && event.button.x < 229) &SDL_BUTTON_LEFT)
+          {
+
+              continuer = 3;
+
+          }
+      break;
+
+    }
+
+    SDL_Flip(window);
+
+    position.x = 0;
+    position.y =0;
+    SDL_BlitSurface(background, NULL, window, &position);
+
+    position.x = 28;
+    position.y = 39;
+    SDL_BlitSurface(bPlayImg, NULL, window, &position);
+
+    position.x = 28;
+    position.y = 167;
+    SDL_BlitSurface(bSetImg, NULL, window, &position);
+
+    position.x = 28;
+    position.y = 423;
+    SDL_BlitSurface(bExitImg, NULL, window, &position);
+
+
+  }
+
+  if(cfg.music_state == 1)
+  {
+
+    Mix_FreeMusic(musique);
+    Mix_CloseAudio();
+
+  }
+
+  sdl_clean();
+
+  return continuer;
+
+}
+
+int sdlSettings(config * cfg)
+{
+
+  SDL_Rect position;
+
+  SDL_Surface * b431Img, * b432Img, * b1691Img, * b1692Img, * bMusicY, * bMusicN, * bBack, * bBall1, * bBall2, * bBall3, * bBall4;
   SDL_Surface * window = NULL;
   SDL_Event event;
 
@@ -29,8 +154,15 @@ sdlSettings(config * cfg)
   b432Img = SDL_LoadBMP("4tiers2.bmp");
   b1691Img = SDL_LoadBMP("16neuvieme1.bmp");
   b1692Img = SDL_LoadBMP("16neuvieme2.bmp");
+  bMusicY = SDL_LoadBMP("music_on.bmp");
+  bMusicN = SDL_LoadBMP ("music_off.bmp");
+  bBack = SDL_LoadBMP ("back.bmp");
+  bBall1 = SDL_LoadBMP("bTenis.bmp");
+  bBall2 = SDL_LoadBMP("bDennis.bmp");
+  bBall3 = SDL_LoadBMP("bBodin.bmp");
+  bBall4 = SDL_LoadBMP("bBannier.bmp");
 
-  int continuer = 1
+  int continuer = 1;
 
   while(continuer == 1)
   {
@@ -45,7 +177,7 @@ sdlSettings(config * cfg)
           break;
 
       case SDL_MOUSEBUTTONUP:
-          if(event.button.y > 38 && event.button.y < 89 && event.button.x > 24 && event.button.x < 226 &SDL_BUTTON_LEFT)
+          if((event.button.y > 38 && event.button.y < 89 && event.button.x > 24 && event.button.x < 226) &SDL_BUTTON_LEFT)
           {
 
             cfg->size_x = 512;
@@ -53,7 +185,7 @@ sdlSettings(config * cfg)
 
           }
 
-          if(event.button.y > 38 && event.button.y < 89 && event.button.x > 249 && event.button.x < 451 &SDL_BUTTON_LEFT)
+          if((event.button.y > 38 && event.button.y < 89 && event.button.x > 249 && event.button.x < 451) &SDL_BUTTON_LEFT)
           {
 
             cfg->size_x = 1024;
@@ -61,7 +193,7 @@ sdlSettings(config * cfg)
 
           }
 
-          if(event.button.y > 38 && event.button.y < 89 && event.button.x > 474 && event.button.x < 676 &SDL_BUTTON_LEFT)
+          if((event.button.y > 38 && event.button.y < 89 && event.button.x > 474 && event.button.x < 676) &SDL_BUTTON_LEFT)
           {
 
             cfg->size_x = 1366;
@@ -69,18 +201,61 @@ sdlSettings(config * cfg)
 
           }
 
-          if(event.button.y > 38 && event.button.y < 89 && event.button.x > 699 && event.button.x < 901 &SDL_BUTTON_LEFT)
+          if((event.button.y > 38 && event.button.y < 89 && event.button.x > 699 && event.button.x < 901) &SDL_BUTTON_LEFT)
           {
 
             cfg->size_x = 1920;
             cfg->size_y = 1080;
 
           }
+
+          if((event.button.y > 422 && event.button.y < 474 && event.button.x > 24 && event.button.x < 226) &SDL_BUTTON_LEFT)
+          {
+
+              if(cfg->music_state == 1)
+              {
+
+                cfg->music_state = 0;
+
+              }
+
+              else
+              {
+
+                cfg->music_state = 1;
+
+              }
+
+          }
+
+          if((event.button.y > 422 && event.button.y < 474 && event.button.x > 699 && event.button.x < 901) &SDL_BUTTON_LEFT)
+          {
+
+            continuer = 0;
+
+          }
+
       break;
 
     }
 
-    SDL_Flip(window);
+    if(cfg->music_state == 1)
+    {
+
+      position.x = 25;
+      position.y = 423;
+      SDL_BlitSurface(bMusicY, NULL, window, &position);
+
+    }
+
+    else
+    {
+
+      position.x = 25;
+      position.y = 423;
+      SDL_BlitSurface(bMusicN, NULL, window, &position);
+
+    }
 
     position.x = 25;
     position.y = 39;
@@ -98,10 +273,32 @@ sdlSettings(config * cfg)
     position.y = 39;
     SDL_BlitSurface(b1692Img, NULL, window, &position);
 
+    position.x = 700;
+    position.y = 423;
+    SDL_BlitSurface(bBack, NULL, window, &position);
+
+    position.x = 25;
+    position.y = 295;
+    SDL_BlitSurface(bBall1, NULL, window, &position);
+
+    position.x = 250;
+    position.y = 295;
+    SDL_BlitSurface(bBall2, NULL, window, &position);
+
+    position.x = 475;
+    position.y = 295;
+    SDL_BlitSurface(bBall3, NULL, window, &position);
+
+    position.x = 700;
+    position.y = 295;
+    SDL_BlitSurface(bBall4, NULL, window, &position);
+
+    SDL_Flip(window);
+
   }
 
     sdl_clean();
 
-    return 0;
+    return 1;
 
 }

@@ -1,5 +1,5 @@
-#ifndef SDL_STUFF_INCLUDED
-#define SDL_STUFF_INCLUDED
+#ifndef SDL_WIN_H
+#define SDL_WIN_H
 
 
 #ifdef __cplusplus
@@ -18,9 +18,12 @@ typedef struct configuration_decl
 
   int size_x;
   int size_y;
+  int music_state;
 
 }config;
 
-sdlSettings(config * cfg);
+int sdlMenu(config cfg);
+
+int sdlSettings(config * cfg);
 
 #endif

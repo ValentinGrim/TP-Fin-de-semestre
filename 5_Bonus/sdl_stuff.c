@@ -22,7 +22,7 @@ int sdl_startup(config cfg)
     atexit(SDL_Quit);
 
     // create a new window
-    screen = SDL_SetVideoMode(WINDOW_SIZE, WINDOW_SIZE, 32,
+    screen = SDL_SetVideoMode(cfg.size_x, cfg.size_y, 32,
                               SDL_HWSURFACE|SDL_DOUBLEBUF);
     if ( !screen )
     {
@@ -43,7 +43,7 @@ int sdl_startup(config cfg)
 }
 
 
-int sdl_loop()
+int sdl_loop(config cfg)
 {
 
     // message processing loop
@@ -76,8 +76,8 @@ int sdl_loop()
 
     // position de la balle en pixels
     SDL_Rect dstrect;
-    dstrect.x =  WINDOW_SIZE*x_pos - bmp->w/2;
-    dstrect.y =  WINDOW_SIZE - WINDOW_SIZE*y_pos - bmp->h/2;
+    dstrect.x =  cfg.size_x*x_pos - bmp->w/2;
+    dstrect.y =  cfg.size_y - cfg.size_y*y_pos - bmp->h/2;
 
     // draw bitmap
     SDL_BlitSurface(bmp, 0, screen, &dstrect);
