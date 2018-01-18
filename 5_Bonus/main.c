@@ -18,14 +18,11 @@ void clicSouris(float x, float y)  //Clique souris de Gravitation
 
 int main()
 {
-<<<<<<< HEAD
-=======
   SDL_Rect position;
 
   SDL_Surface * bPlayImg;
   SDL_Surface * bSetImg;
   SDL_Surface * bExitImg;
->>>>>>> b95703db88dd0efa7004cf796532a95737ccae90
 
   SDL_Surface *window = NULL;
   SDL_Event event;

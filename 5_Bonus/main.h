@@ -1,11 +1,11 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-typedef struct positionBouton_decl
+typedef struct CliqueSouris_Position
 {
 
   int x;
   int y;
 
-}pBouton;
+}bLeft;
 #endif
