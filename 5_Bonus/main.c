@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <math.h>
 #include"sdl_stuff.h"
-#include "decl.h"
+
 #include "fpstimer.h"
 #include <stdio.h>
 #include <SDL/SDL.h>
@@ -12,9 +12,11 @@
 
 int main()
 {
-  pBouton bPlay;
-  pBouton bSet;
-  pBouton bExit;
+  SDL_Rect position;
+  
+  SDL_Surface * bPlayImg;
+  SDL_Surface * bSetImg;
+  SDL_Surface * bExitImg;
 
   SDL_Surface *window = NULL;
   SDL_Event event;
@@ -32,22 +34,14 @@ int main()
   }
 
   SDL_WM_SetCaption("Menu Bonus", NULL);
-  SDL_FillRect(window, NULL, SDL_MapRGB(window->format,245,80,0);
-  bPlay.x = 128;
-  bPlay.y = 64;
-
-  bSet.x  = 128;
-  bSet.y = 192;
-
-  bExit.x = 128;
-  bExit.y = 448;
+  SDL_FillRect(window, NULL, SDL_MapRGB(window->format,245,80,0));
 
   bPlayImg = SDL_LoadBMP("Button_Play.bmp");
   bSetImg = SDL_LoadBMP("Button_Settings.bmp");
   bExitImg = SDL_LoadBMP("Button_Exit.bmp");
 
   int continuer = 1;
-  while(continuer)
+  while(continuer == 1)
   {
 
     SDL_WaitEvent(&event);
@@ -60,34 +54,32 @@ int main()
 
       case SDL_MOUSEBUTTONUP:
         if(event.button.y > 38 && event.button.y < 90 && event.button.x > 27 && event.button.x < 229)
-        {
-
-        }
-        break;
-
-        case SDL_MOUSEBUTTONUP:
-          if(event.button.y > 166 && event.button.y < 218 && event.button.x > 27 && event.button.x < 229)
-          {
-
-          }
-          break;
-
-        case SDL_MOUSEBUTTONUP:
-          if(event.button.y > 422 && event.button.y < 474 && event.button.x > 27 && event.button.x < 229)
+        
+        if(event.button.y > 166 && event.button.y < 218 && event.button.x > 27 && event.button.x < 229)
+        
+        if(event.button.y > 422 && event.button.y < 474 && event.button.x > 27 && event.button.x < 229)
           {
 
               continuer = 0;
               
           }
-          break;
+        break;
 
     }
 
     SDL_Flip(window);
-
-    SDL_BlitSurface(bPlayImg, NULL, window, &bPlay);
-    SDL_BlitSurface(bSetImg, NULL, window, &bSet);
-    SDL_BlitSurface(bExitImg, NULL, windows, &bExit);
+	
+    position.x = 28;
+    position.y = 39;
+    SDL_BlitSurface(bPlayImg, NULL, window, &position);
+    
+    position.x = 28;
+    position.y = 167;
+    SDL_BlitSurface(bSetImg, NULL, window, &position);
+    
+    position.x = 28;
+    position.y = 423;
+    SDL_BlitSurface(bExitImg, NULL, window, &position);
 
   }
 
