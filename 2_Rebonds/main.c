@@ -11,7 +11,7 @@
 int main ( int argc, char** argv )
 {
 
-    if (agrc < 2) // Test du nombre d'arguments d'entrée en console sionon quitte si il n'y en a pas assez.
+    if (agrc < 2) // Test du nombre d'arguments minimum d'entrée en console sinon quitte si il n'y en a pas assez.
     {
 
       printf("Il manque un ou plusieurs arguments.");
