@@ -29,6 +29,4 @@ Balle chargerBalle(char * argc);        // Prototype de la fonction chargerBalle
 
 int majPosition(Balle * Balle ,float dt); // Prototype de la fonction majPosition
 
-int normalVectnot(Vecteur v1);          // Prototype de la fonction normalVectnot
-
-#endif 
+#endif /* balle_h */
