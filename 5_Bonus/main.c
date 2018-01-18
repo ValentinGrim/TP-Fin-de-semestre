@@ -13,6 +13,7 @@ int main()
 {
 
   SDL_Surface *window = NULL;
+  SDL_Event event;
 
   SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
 
@@ -27,28 +28,26 @@ int main()
   }
 
   SDL_WM_SetCaption("Menu Bonus", NULL);
-  SDL_Surface *icon = NULL;
-  icon = SDL_LoadBMP("icon.bmp");
-  SDL_WN_SetIcon(icon, NULL);
-  SDL_MapRGB(window->format,245,80,0);
-  
-  while(1);
+  SDL_FillRect(window, NULL, SDL_MapRGB(window->format,245,80,0);
 
-  if(!sdl_startup())
-      return -1;
-
-  fpsInit();
-
-  // program main loop
-  do
+  int continuer = 1;
+  while(continuer)
   {
 
-      fpsStep();
+    SDL_WaitEvent(&event);
+    switch(event.type)
+    {
+
+      case SDL_QUIT:
+        continuer = 0;
+        break;
+
+    }
 
   }
-  while(sdl_loop());
-  // end main loop
 
   sdl_clean();
+
   return 0;
+
 }

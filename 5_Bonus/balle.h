@@ -11,7 +11,7 @@
 
 #include "vecteur.h"
 
-typedef struct Balle_decl			// Définition de la structure Balle_decl
+typedef struct Balle_decl             // Définition de la structure Balle_decl
 {
 
   float masse;              //Kilo
@@ -22,18 +22,8 @@ typedef struct Balle_decl			// Définition de la structure Balle_decl
 
 } Balle;
 
-typedef struct AttracteurList_decl		// Définition de la structure AttracteurList_decl
-{
+Balle chargerBalle(char * argc);        // Prototype de la fonction chargerBalle
 
-	Vecteur positionAttracteur[5];
-	int utiliseMoi [5];
-
-}AttracteurList;
-
-Balle chargerBalle(char * argc);		// Prototype de la fonction chargerBalle
-
-int majPosition(Balle * Balle, AttracteurList * pAttrList ,float dt);     // Met a jour la position de la balle en appliquant le PFD
-
-void initAttracteurList(AttracteurList * pAttrList);		// Prototype de la fonction initAttracteurList
+int majPosition(Balle * Balle ,float dt);     // Prototype de la fonction majPosition
 
 #endif 

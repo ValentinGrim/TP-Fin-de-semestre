@@ -1,9 +1,6 @@
 #ifndef SDL_STUFF_INCLUDED
 #define SDL_STUFF_INCLUDED
 
-#ifndef NO_STDIO_REDIRECT
-#define NO_STDIO_REDIRECT
-#endif
 
 #ifdef __cplusplus
 #include <cstdlib>
@@ -24,10 +21,9 @@
 int sdl_loop();
 int sdl_startup();
 void sdl_clean();
-void configWin();
 
-// la fenettre s'etend de [-1,-1] ï¿½ [+1,+1]
-void sdl_setBallPosition(int balleIndex,float x,float y);
+// la fenettre s'etend de [0,0] à [+1,+1]
+void sdl_setBallPosition(float x,float y);
 
 
 #endif

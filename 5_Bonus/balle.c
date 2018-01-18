@@ -26,44 +26,21 @@ Balle chargerBalle(char * chemin)
   return Balle_v;
 }
 
-
-int majPosition(Balle * Balle_v, AttracteurList * pAttrList , float dt)          // Met a jour la position de la balle en appliquant le PFD et retourne -1 si balle est NULL (securite) retourne -1 si balle est NULL (securite)
+int majPosition(Balle * Balle_v, float dt)          // Met a jour la position de la balle en appliquant le PFD et retourne -1 si balle est NULL (securite) 
 {
 
-  if (!Balle_v) return -1;
+   if (!Balle_v) return -1;
 
   else
-  {
+  { 
 
-    Vecteur S;
-    S = creerVect(0,0);                               // Le vecteur de la somme des forces de gravitation
+    Vecteur P = creerVect(0,-9.81);                  // Création du vecteur poids
+    P = multScalVect(Balle_v->masse,P);
 
-    int i;
-
-    for(i = 0; pAttrList->utiliseMoi[i]!=0; i++)
-    {
-
-
-        Vecteur direction = subVect(pAttrList->positionAttracteur[i],Balle_v->position); // Calcule Vecteur direction
-        float distance = normVect(direction);						 // Calcule norme du vecteur direction
-        direction = normaliseVect(direction);						 // Normalise le vecteur direction
-
-	float magnitude =(0.1/(distance * distance));		// Calcule la magnitude de la force de Gravitation
-	if (magnitude > 1)					// Restreint la magnitude quand elle est supérieur à 1
-	{
-	
-		magnitude = 0.5;
-		
-	}
-	
-        Vecteur F = multScalVect(magnitude,direction);		// Calcule la force de gravitation 
-        Vecteur F2 = multScalVect(pAttrList->utiliseMoi[i],F);	// Sécurité si il n'y a pas d'attracteur
-
-        S = addVect(S,F2);	// Vecteur de la somme des forces
-
-    }
-
-
+    Vecteur f = multScalVect(-Balle_v->coeffriction,Balle_v->vitesse);      // Création du vecteur des forces de frottements fisqueux
+    
+    Vecteur S = addVect(P,f);                        // Le vecteur de la somme des forces
+   
     Balle_v->acceleration = multScalVect(((float)1/Balle_v->masse),S);      //calcul de l’accélération courante grâce à l’équation (1)
     Balle_v->vitesse = addVect(Balle_v->vitesse,(multScalVect(dt , Balle_v->acceleration)));      // Calcul de la nouvelle vitesse grâce à l'équation (2)
     Balle_v->position = addVect(Balle_v->position,(multScalVect(dt , Balle_v->vitesse)));     //Calcul de la nouvelle position grâce a l'équation (3)
@@ -71,20 +48,5 @@ int majPosition(Balle * Balle_v, AttracteurList * pAttrList , float dt)         
     return 0;
 
   }
-
-}
-
-void initAttracteurList(AttracteurList * pAttrList)	// Initialisation des attracteurs à 0
-{
-
-	int i;
-	for(i = 0; i < 5; i++)
-	{
-
-		pAttrList->positionAttracteur[i].x = 0;		
-		pAttrList->positionAttracteur[i].y = 0;		
-		pAttrList->utiliseMoi[i] = 0;
-
-	}
 
 }

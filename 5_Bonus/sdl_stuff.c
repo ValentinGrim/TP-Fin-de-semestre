@@ -1,35 +1,17 @@
-//
-//  sdl_stuff.c
-//  Bonus
-//
-//  Modified by Valentin Monnot / Josselin Pichereau on 18/01/2018.
-//  Evalution TP Final
-//
 #include "sdl_stuff.h"
-#include "decl.h"
-
 #include <unistd.h>
+
 
 SDL_Surface * bmp;
 SDL_Surface * screen;
 
-
-typedef struct
-{
-    float x,y;
-} vec2f;
-
-
-vec2f positions[NB_BALLES];
-
-
-extern void dragSouris(float x, float y);
+float x_pos = 0.0f;
+float y_pos = 0.0f;
 
 int sdl_startup()
 {
-
     // initialize SDL video
-    if ( SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0 )
+    if ( SDL_Init( SDL_INIT_VIDEO ) < 0 )
     {
         printf( "Unable to init SDL: %s\n", SDL_GetError() );
         return 0;
@@ -62,10 +44,9 @@ int sdl_startup()
 
 int sdl_loop()
 {
-    int i;
+
     // message processing loop
     SDL_Event event;
-    static int leftButtonState = 0; // 0 = released , 1 = pressed
     while (SDL_PollEvent(&event))
     {
         // check for messages
@@ -84,74 +65,37 @@ int sdl_loop()
                 return 0;
             break;
         }
-
-        case SDL_MOUSEBUTTONUP:
-        {
-            //Si le bouton gauche de la souris est relache
-            if( event.button.button & SDL_BUTTON_LEFT )
-            {
-                leftButtonState = 0;
-            }
-            break;
-
-        }
-
-        case SDL_MOUSEBUTTONDOWN:
-        {
-
-            //Si le bouton gauche de la souris est presse
-            if( event.button.button & SDL_BUTTON_LEFT )
-            {
-                leftButtonState = 1;
-            }
-            break;
-        }
-
-
         } // end switch
     } // end of message processing
-
-    if(leftButtonState == 1)
-    {
-        int x,y;
-        SDL_GetMouseState(&x,&y);
-        dragSouris((float)x/ WINDOW_SIZE, (float)(WINDOW_SIZE-y)/WINDOW_SIZE);
-    }
 
     // DRAWING STARTS HERE
 
     // clear screen
     SDL_FillRect(screen, 0, SDL_MapRGB(screen->format, 0, 0, 0));
 
-    // dessine les  balles
-    for(i=0; i<NB_BALLES; i++)
-    {
-        // position de la balle en pixels
-        SDL_Rect dstrect;
-        dstrect.x =  WINDOW_SIZE*positions[i].x - bmp->w/2;
-        dstrect.y =  WINDOW_SIZE - WINDOW_SIZE*positions[i].y - bmp->h/2;
+    // position de la balle en pixels
+    SDL_Rect dstrect;
+    dstrect.x =  WINDOW_SIZE*x_pos - bmp->w/2;
+    dstrect.y =  WINDOW_SIZE - WINDOW_SIZE*y_pos - bmp->h/2;
 
-        // draw bitmap
-        SDL_BlitSurface(bmp, 0, screen, &dstrect);
-
-    }
+    // draw bitmap
+    SDL_BlitSurface(bmp, 0, screen, &dstrect);
 
     // DRAWING ENDS HERE
 
     // finally, update the screen :)
     SDL_Flip(screen);
-
-    usleep(1000);
+	
+	usleep(1000);
 
     return 1;
 }
 
 
-void sdl_setBallPosition(int balleIndex,float x,float y)
+void sdl_setBallPosition(float x,float y)
 {
-
-    positions[balleIndex].x = x;
-    positions[balleIndex].y = y;
+    x_pos = x;
+    y_pos = y;
 }
 
 
