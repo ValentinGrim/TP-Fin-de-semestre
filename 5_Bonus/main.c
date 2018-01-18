@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <math.h>
 #include"sdl_stuff.h"
-
+#include "sdl_win.h"
 #include "fpstimer.h"
 #include <stdio.h>
 #include <SDL/SDL.h>

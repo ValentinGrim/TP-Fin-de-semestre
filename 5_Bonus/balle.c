@@ -20,17 +20,22 @@ Balle chargerBalle(char * chemin)
   {
 
     printf("Problème lors de l'ouverture du fichier de configuration.");
-    return EXIT_FAILURE;
 
   }
 
-  fscanf(pFichier, "masse %f\n", &Balle_v.masse); //Récupération de la valeur de la masse
-  fscanf(pFichier, "fCoef %f\n", &Balle_v.coeffriction); //Récupération de la valeur du coef.friction
-  fscanf(pFichier, "position %f %f\n", &Balle_v.position.x, &Balle_v.position.y); //Récupéreration de la valeur position en x et y
-  fscanf(pFichier, "vitesse %f %f", &Balle_v.vitesse.x, &Balle_v.vitesse.y); // Récupérer valeur vitesse en x et y
-  fclose(pFichier);
+  else
+  {
 
-  return Balle_v;
+    fscanf(pFichier, "masse %f\n", &Balle_v.masse); //Récupération de la valeur de la masse
+    fscanf(pFichier, "fCoef %f\n", &Balle_v.coeffriction); //Récupération de la valeur du coef.friction
+    fscanf(pFichier, "position %f %f\n", &Balle_v.position.x, &Balle_v.position.y); //Récupéreration de la valeur position en x et y
+    fscanf(pFichier, "vitesse %f %f", &Balle_v.vitesse.x, &Balle_v.vitesse.y); // Récupérer valeur vitesse en x et y
+    fclose(pFichier);
+
+    return Balle_v;
+
+  }
+  
 }
 
 int majPosition(Balle * Balle_v, float dt)          // Met a jour la position de la balle en appliquant le PFD et retourne -1 si balle est NULL (securite)
