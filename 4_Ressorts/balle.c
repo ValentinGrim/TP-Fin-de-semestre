@@ -97,7 +97,7 @@ int majPosition(Balle * Balle_v, float dt)          // Mise à jour de la positi
     }
 
 
-    	Balle_v->acceleration = multScalVect(((float)1/Balle_v->masse),S);     //calcul de l’accélération courante grâce à l’équation (1)
+    	Balle_v->acceleration = multScalVect(((float)1/Balle_v->masse),S);     // Calcul de l’accélération courante grâce à l’équation (1)
 
     	Balle_v->vitesse = addVect(Balle_v->vitesse,(multScalVect(dt , Balle_v->acceleration)));      // Calcul de la nouvelle vitesse grâce à l'équation (2)
 
