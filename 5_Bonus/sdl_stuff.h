@@ -1,6 +1,9 @@
 #ifndef SDL_STUFF_INCLUDED
 #define SDL_STUFF_INCLUDED
 
+#ifndef NO_STDIO_REDIRECT
+#define NO_STDIO_REDIRECT
+#endif
 
 #ifdef __cplusplus
 #include <cstdlib>
@@ -13,17 +16,16 @@
 #include <SDL/SDL.h>
 #endif
 
+#include "sdl_win.h"
 
-#define WINDOW_SIZE 512
-// le bitmap fait 32x32 pixel, la fenettre 512x512
-#define BALL_RADIUS (16.0f/(float)WINDOW_SIZE)
+#define BALL_RADIUS (16.0f/(float)512)
 
-int sdl_loop();
-int sdl_startup();
+int sdl_loop(config cfg);
+int sdl_startup(config cfg);
 void sdl_clean();
 
-// la fenettre s'etend de [0,0] à [+1,+1]
-void sdl_setBallPosition(float x,float y);
+// la fenettre s'etend de [-1,-1] ï¿½ [+1,+1]
+void sdl_setBallPosition(int balleIndex,float x,float y);
 
 
 #endif

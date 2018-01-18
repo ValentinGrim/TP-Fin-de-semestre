@@ -19,11 +19,16 @@ typedef struct configuration_decl
   int size_x;
   int size_y;
   int music_state;
+  int ball_v;
+  int nbballs;
+  int clear;
 
 }config;
 
 int sdlMenu(config cfg);
 
 int sdlSettings(config * cfg);
+
+int sdlPlay(config cfg);
 
 #endif
