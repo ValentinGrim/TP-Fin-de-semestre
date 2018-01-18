@@ -36,7 +36,7 @@ Balle chargerBalle(char * chemin)
 
 }
 
-int normalVectnot(Vecteur v1)
+int normalVectnot(Vecteur v1)				// Fonction vérifiant si un vecteur n'est pas égal à 0
 {
 	if(v1.x == 0 && v1.y == 0)
 	return 1;
