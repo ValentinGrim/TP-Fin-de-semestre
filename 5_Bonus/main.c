@@ -6,6 +6,8 @@
 #include"sdl_stuff.h"
 #include "decl.h"
 #include "fpstimer.h"
+#include <stdio.h>
+#include <SDL/SDL.h>
 
 int main()
 {
@@ -16,7 +18,7 @@ int main()
 
   window = SDL_SetVideoMode(256, 512, 32,SDL_HWSURFACE|SDL_DOUBLEBUF);
 
-  if (ecran == NULL) // Si l'ouverture a échoué, on le note et on arrête
+  if (window == NULL) // Si l'ouverture a échoué, on le note et on arrête
   {
 
       printf("Impossible d'ouvrir la fenêtre : %s\n", SDL_GetError());
@@ -24,7 +26,12 @@ int main()
 
   }
 
-  configWin();
+  SDL_WM_SetCaption("Menu Bonus", NULL);
+  SDL_Surface *icon = NULL;
+  icon = SDL_LoadBMP("icon.bmp");
+  SDL_WN_SetIcon(icon, NULL);
+  SDL_MapRGB(window->format,245,80,0);
+  
   while(1);
 
   if(!sdl_startup())
