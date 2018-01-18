@@ -25,6 +25,16 @@ vec2f positions[NB_BALLES];
 
 extern void dragSouris(float x, float y);
 
+void configWin()
+{
+
+  SDL_WM_SetCaption("Menu Bonus", NULL);
+  SDL_Surface *icon = NULL;
+  icon = SDL_LoadBMP("icon.bmp");
+  SDL_WN_SetIcon(icon, NULL);
+  SDL_MapRGB(window->format,245,80,0);
+
+}
 
 int sdl_startup()
 {

@@ -24,8 +24,9 @@
 int sdl_loop();
 int sdl_startup();
 void sdl_clean();
+void configWin();
 
-// la fenettre s'etend de [-1,-1] à [+1,+1]
+// la fenettre s'etend de [-1,-1] ï¿½ [+1,+1]
 void sdl_setBallPosition(int balleIndex,float x,float y);
 
 
