@@ -9,7 +9,7 @@
 
 AttracteurList gAttractList;    // Variable global du nombre et de la position des attracteurs
 
-    
+
 void clicSouris(float x, float y)       // Fonction appellée lorsque l'on appuie avec le bouton gauche de la souris
 {
     // NB : une variable locale declaree static ne perd pas sa valeur entre deux appels a 	la fonction
@@ -38,6 +38,7 @@ int main ( int argc, char** argv )
     }
     float dt; // Déclaration de la variable delta
     Balle Balle_v = chargerBalle(argv[1]); // Déclaration de la balle et chargement des paramètres du fichier texte.
+    initAttracteurList(&gAttractList); //initialisation des attracteur a 0
 
     if(!sdl_startup())
         return -1;
@@ -48,7 +49,7 @@ int main ( int argc, char** argv )
     {
         fpsStep();
 
-        
+
         dt=fpsGetDeltaTime(); // Assigne le temps entre deux frames à la variable dt
         majPosition(&Balle_v, &gAttractList, dt); // Met à jour la position de la balle en fonction de dt et de la liste des attracteurs
 

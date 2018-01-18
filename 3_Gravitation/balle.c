@@ -16,6 +16,13 @@ Balle chargerBalle(char * chemin)
   Balle Balle_v;       // Déclaration de la balle principale
   FILE *pFichier = NULL; //initialisation du pointeur sur fichier à NULL
   pFichier = fopen(chemin, "r"); //Ouverture fichier texte
+  if(!pFichier)
+  {
+
+    printf("Problème lors de l'ouverture du fichier de configuration.");
+    return EXIT_FAILURE;
+
+  }
 
   fscanf(pFichier, "masse %f\n", &Balle_v.masse); //Récupération de la valeur de la masse
   fscanf(pFichier, "fCoef %f\n", &Balle_v.coeffriction); //Récupération de la valeur du coef.friction
@@ -51,12 +58,12 @@ int majPosition(Balle * Balle_v, AttracteurList * pAttrList , float dt)         
 	float magnitude =(0.1/(distance * distance));		// Calcule la magnitude de la force de Gravitation
 	if (magnitude > 1)					// Restreint la magnitude quand elle est supérieur à 1
 	{
-	
+
 		magnitude = 0.5;
-		
+
 	}
-	
-        Vecteur F = multScalVect(magnitude,direction);		// Calcule la force de gravitation 
+
+        Vecteur F = multScalVect(magnitude,direction);		// Calcule la force de gravitation
         Vecteur F2 = multScalVect(pAttrList->utiliseMoi[i],F);	// Sécurité si il n'y a pas d'attracteur
 
         S = addVect(S,F2);	// Vecteur de la somme des forces
@@ -81,8 +88,8 @@ void initAttracteurList(AttracteurList * pAttrList)	// Initialisation des attrac
 	for(i = 0; i < 5; i++)
 	{
 
-		pAttrList->positionAttracteur[i].x = 0;		
-		pAttrList->positionAttracteur[i].y = 0;		
+		pAttrList->positionAttracteur[i].x = 0;
+		pAttrList->positionAttracteur[i].y = 0;
 		pAttrList->utiliseMoi[i] = 0;
 
 	}
